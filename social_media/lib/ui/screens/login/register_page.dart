@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:form_field_validator/form_field_validator.dart';
 import 'package:social_media/domain/blocs/blocs.dart';
 import 'package:social_media/ui/helpers/helpers.dart';
@@ -75,62 +76,61 @@ class _RegisterPageState extends State<RegisterPage> {
         ),
         body: SafeArea(
           child: Padding(
-            padding:
-                const EdgeInsets.symmetric(horizontal: 20.0, vertical: 10.0),
+            padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 10.h),
             child: SingleChildScrollView(
               child: Form(
                 key: _keyForm,
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    const TextCustom(
+                    TextCustom(
                         text: 'Hello!',
                         letterSpacing: 1.5,
                         fontWeight: FontWeight.w500,
-                        fontSize: 28,
+                        fontSize: 28.sp,
                         color: CustomColors.secundary),
-                    const SizedBox(height: 10.0),
-                    const TextCustom(
+                    SizedBox(height: 10.h),
+                    TextCustom(
                       text: 'Create a new account.',
-                      fontSize: 17,
+                      fontSize: 17.sp,
                       letterSpacing: 1.0,
                     ),
-                    const SizedBox(height: 40.0),
+                    SizedBox(height: 40.h),
                     TextFieldCustom(
                       controller: fullNameController,
                       hintText: 'Full name',
                       validator:
                           RequiredValidator(errorText: 'Name is required'),
                     ),
-                    const SizedBox(height: 40.0),
+                    SizedBox(height: 40.h),
                     TextFieldCustom(
                       controller: userController,
                       hintText: 'User',
                       validator:
                           RequiredValidator(errorText: 'User is required'),
                     ),
-                    const SizedBox(height: 40.0),
+                    SizedBox(height: 40.h),
                     TextFieldCustom(
                       controller: emailController,
                       hintText: 'Email',
                       keyboardType: TextInputType.emailAddress,
                       validator: validatedEmail,
                     ),
-                    const SizedBox(height: 40.0),
+                    SizedBox(height: 40.h),
                     TextFieldCustom(
                       controller: passwordController,
                       hintText: 'Password',
                       isPassword: true,
                       validator: passwordValidator,
                     ),
-                    const SizedBox(height: 60.0),
-                    const TextCustom(
+                    SizedBox(height: 60.h),
+                    TextCustom(
                       text:
                           'By signing up, you agree to the terms of service and privacy policy.',
-                      fontSize: 15,
+                      fontSize: 15.sp,
                       maxLines: 2,
                     ),
-                    const SizedBox(height: 20.0),
+                    SizedBox(height: 20.h),
                     BtnCustom(
                         text: 'Register',
                         width: size.width,

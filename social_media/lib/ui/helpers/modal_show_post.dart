@@ -1,6 +1,7 @@
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:social_media/commons/assets.dart';
 import 'package:social_media/data/env/env.dart';
@@ -24,21 +25,21 @@ void modalShowPost(BuildContext context, {required Post post}) {
                 padding: const EdgeInsets.symmetric(horizontal: 20.0),
                 child: Container(
                   padding: const EdgeInsets.all(1.0),
-                  height: 422,
+                  height: 422.h,
                   width: MediaQuery.of(context).size.width,
                   decoration: BoxDecoration(
                       // color: Colors.amber,
-                      borderRadius: BorderRadius.circular(10.0)),
+                      borderRadius: BorderRadius.circular(10.r)),
                   child: Column(
                     children: [
                       Container(
-                        padding: const EdgeInsets.only(left: 10.0, right: 10.0),
-                        height: 50,
+                        padding: EdgeInsets.only(left: 10.w, right: 10.w),
+                        height: 50.h,
                         width: MediaQuery.of(context).size.width,
-                        decoration: const BoxDecoration(
+                        decoration: BoxDecoration(
                             color: Colors.white,
                             borderRadius: BorderRadius.vertical(
-                                top: Radius.circular(10.0))),
+                                top: Radius.circular(10.r))),
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
@@ -48,7 +49,7 @@ void modalShowPost(BuildContext context, {required Post post}) {
                                   backgroundImage: NetworkImage(
                                       Environment.baseUrl + post.avatar),
                                 ),
-                                const SizedBox(width: 10.0),
+                                SizedBox(width: 10.w),
                                 TextCustom(
                                     text: post.username,
                                     fontWeight: FontWeight.w500)
@@ -60,7 +61,7 @@ void modalShowPost(BuildContext context, {required Post post}) {
                       ),
 
                       Container(
-                          height: 320,
+                          height: 320.h,
                           width: MediaQuery.of(context).size.width,
                           decoration: BoxDecoration(
                               image: DecorationImage(
@@ -70,13 +71,13 @@ void modalShowPost(BuildContext context, {required Post post}) {
 
                       // Bottom Modal Options
                       Container(
-                        padding: const EdgeInsets.only(left: 10.0, right: 10.0),
-                        height: 50,
+                        padding: EdgeInsets.only(left: 10.w, right: 10.w),
+                        height: 50.h,
                         width: MediaQuery.of(context).size.width,
-                        decoration: const BoxDecoration(
+                        decoration: BoxDecoration(
                             color: Colors.white,
                             borderRadius: BorderRadius.vertical(
-                                bottom: Radius.circular(10.0))),
+                                bottom: Radius.circular(10.r))),
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
@@ -86,12 +87,12 @@ void modalShowPost(BuildContext context, {required Post post}) {
                                     onPressed: () {},
                                     icon: const Icon(
                                         Icons.favorite_outline_rounded)),
-                                const SizedBox(width: 20.0),
+                                SizedBox(width: 20.w),
                                 SvgPicture.asset(SocialMediaAssets.messageIcon,
                                     color: Colors.black),
-                                const SizedBox(width: 20.0),
+                                SizedBox(width: 20.w),
                                 SvgPicture.asset(SocialMediaAssets.sendIcon,
-                                    height: 24, color: Colors.black)
+                                    height: 24.h, color: Colors.black)
                               ],
                             ),
                             const Icon(Icons.bookmark_outline_rounded)

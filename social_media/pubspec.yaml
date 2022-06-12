@@ -43,16 +43,33 @@ dependencies:
   cached_network_image: ^3.2.0
   socket_io_client: ^1.0.2
   equatable: ^2.0.3
+  get_it: ^7.2.0
+  antdesign_icons: ^0.0.3
+  tinycolor2: ^2.0.1
+  logger: ^1.1.0
+  jwt_decoder: ^2.0.1
+  shared_preferences: ^2.0.15
+  dio: ^4.0.6
+  modal_bottom_sheet: ^2.0.1
+  flutter_screenutil: ^5.5.3+2
 
 dev_dependencies:
   flutter_lints: ^1.0.0
   flutter_test:
     sdk: flutter
+  intl_utils: ^2.6.1
 
 flutter:
   generate: true
   uses-material-design: true
-
   assets:
     - assets/images/svg/
     - assets/images/png/
+
+flutter_intl: # Add this line
+  enabled: true # Add this line
+  class_name: S # Add this line
+  main_locale: vi # Add this line
+  arb_dir: lib/commons/l10n/translation # Add this line
+  output_dir: lib/commons/l10n/generated # Add this line
+  use_deferred_loading: true

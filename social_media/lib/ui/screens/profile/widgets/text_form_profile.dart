@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:social_media/ui/themes/color_custom.dart';
 
@@ -24,7 +25,7 @@ class TextFormProfile extends StatelessWidget {
   Widget build(BuildContext context) {
     return TextFormField(
       controller: controller,
-      style: GoogleFonts.getFont('Roboto', fontSize: 18),
+      style: GoogleFonts.getFont('Roboto', fontSize: 18.sp),
       cursorColor: CustomColors.secundary,
       keyboardType: keyboardType,
       readOnly: isReadOnly,

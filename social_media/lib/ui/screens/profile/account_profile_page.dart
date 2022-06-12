@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:form_field_validator/form_field_validator.dart';
 import 'package:social_media/domain/blocs/blocs.dart';
 import 'package:social_media/ui/helpers/helpers.dart';
@@ -69,7 +70,7 @@ class _AccountProfilePageState extends State<AccountProfilePage> {
         backgroundColor: Colors.white,
         appBar: AppBar(
           backgroundColor: Colors.white,
-          title: const TextCustom(text: 'Update profile', fontSize: 19),
+          title: TextCustom(text: 'Update profile', fontSize: 19.sp),
           elevation: 0,
           leading: IconButton(
             highlightColor: Colors.transparent,
@@ -88,17 +89,17 @@ class _AccountProfilePageState extends State<AccountProfilePage> {
                         _phoneController.text.trim()));
                   }
                 },
-                child: const TextCustom(
-                    text: 'Save', color: CustomColors.primary, fontSize: 14))
+                child: TextCustom(
+                    text: 'Save', color: CustomColors.primary, fontSize: 14.sp))
           ],
         ),
         body: Form(
           key: _keyForm,
           child: SafeArea(
             child: ListView(
-              padding: const EdgeInsets.symmetric(horizontal: 20.0),
+              padding: EdgeInsets.symmetric(horizontal: 20.w),
               children: [
-                const SizedBox(height: 20.0),
+                SizedBox(height: 20.h),
                 TextFormProfile(
                     controller: _userController,
                     labelText: 'User',
@@ -106,18 +107,18 @@ class _AccountProfilePageState extends State<AccountProfilePage> {
                       RequiredValidator(errorText: 'User is required'),
                       MinLengthValidator(3, errorText: 'Minimum 3 characters')
                     ])),
-                const SizedBox(height: 10.0),
+                SizedBox(height: 10.h),
                 TextFormProfile(
                     controller: _descriptionController,
                     labelText: 'Description',
                     maxLines: 3),
-                const SizedBox(height: 20.0),
+                SizedBox(height: 20.h),
                 TextFormProfile(
                   controller: _emailController,
                   isReadOnly: true,
                   labelText: 'Email',
                 ),
-                const SizedBox(height: 20.0),
+                SizedBox(height: 20.h),
                 TextFormProfile(
                     controller: _fullNameController,
                     labelText: 'Fullname',
@@ -125,7 +126,7 @@ class _AccountProfilePageState extends State<AccountProfilePage> {
                       RequiredValidator(errorText: 'Name is required'),
                       MinLengthValidator(3, errorText: 'Minimum 3 characters')
                     ])),
-                const SizedBox(height: 20.0),
+                SizedBox(height: 20.h),
                 TextFormProfile(
                   controller: _phoneController,
                   labelText: 'Phone',

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:permission_handler/permission_handler.dart';
 import 'package:social_media/domain/blocs/blocs.dart';
@@ -44,13 +45,13 @@ class ProfilePage extends StatelessWidget {
           body: ListView(
             children: [
               _CoverAndProfile(size: size),
-              const SizedBox(height: 10.0),
+              SizedBox(height: 10.h),
               const _UsernameAndDescription(),
-              const SizedBox(height: 30.0),
+              SizedBox(height: 30.h),
               const _PostAndFollowingAndFollowers(),
-              const SizedBox(height: 30.0),
+              SizedBox(height: 30.h),
               Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 15.0),
+                padding: EdgeInsets.symmetric(horizontal: 15.w),
                 child: BlocBuilder<UserBloc, UserState>(
                   builder: (_, state) => AnimatedToggle(
                     values: const ['Photos', 'Saved'],
@@ -60,9 +61,9 @@ class ProfilePage extends StatelessWidget {
                   ),
                 ),
               ),
-              const SizedBox(height: 20.0),
+              SizedBox(height: 20.h),
               Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 15.0),
+                padding: EdgeInsets.symmetric(horizontal: 15.w),
                 child: BlocBuilder<UserBloc, UserState>(
                     buildWhen: (previous, current) => previous != current,
                     builder: (_, state) => state.isPhotos
@@ -88,12 +89,12 @@ class _ListFotosProfile extends StatelessWidget {
         builder: (context, snapshot) {
           return !snapshot.hasData
               ? Column(
-                  children: const [
-                    ShimmerCustom(),
-                    SizedBox(height: 10.0),
-                    ShimmerCustom(),
-                    SizedBox(height: 10.0),
-                    ShimmerCustom(),
+                  children: [
+                    const ShimmerCustom(),
+                    SizedBox(height: 10.h),
+                    const ShimmerCustom(),
+                    SizedBox(height: 10.h),
+                    const ShimmerCustom(),
                   ],
                 )
               : GridView.builder(
@@ -137,12 +138,12 @@ class _ListSaveProfile extends StatelessWidget {
       future: postService.getListPostSavedByUser(),
       builder: (context, snapshot) => !snapshot.hasData
           ? Column(
-              children: const [
-                ShimmerCustom(),
-                SizedBox(height: 10.0),
-                ShimmerCustom(),
-                SizedBox(height: 10.0),
-                ShimmerCustom(),
+              children: [
+                const ShimmerCustom(),
+                SizedBox(height: 10.h),
+                const ShimmerCustom(),
+                SizedBox(height: 10.h),
+                const ShimmerCustom(),
               ],
             )
           : GridView.builder(
@@ -180,7 +181,7 @@ class _PostAndFollowingAndFollowers extends StatelessWidget {
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
     return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 30.0),
+      padding: EdgeInsets.symmetric(horizontal: 30.w),
       width: size.width,
       child: Column(
         children: [
@@ -193,12 +194,12 @@ class _PostAndFollowingAndFollowers extends StatelessWidget {
                       builder: (_, state) => state.postsUser?.posters != null
                           ? TextCustom(
                               text: state.postsUser!.posters.toString(),
-                              fontSize: 22,
+                              fontSize: 22.sp,
                               fontWeight: FontWeight.w500)
                           : const TextCustom(text: '0')),
-                  const TextCustom(
+                  TextCustom(
                       text: 'Post',
-                      fontSize: 17,
+                      fontSize: 17.sp,
                       color: Colors.grey,
                       letterSpacing: .7),
                 ],
@@ -212,12 +213,12 @@ class _PostAndFollowingAndFollowers extends StatelessWidget {
                         builder: (_, state) => state.postsUser?.friends != null
                             ? TextCustom(
                                 text: state.postsUser!.friends.toString(),
-                                fontSize: 22,
+                                fontSize: 22.sp,
                                 fontWeight: FontWeight.w500)
                             : const TextCustom(text: '')),
-                    const TextCustom(
+                    TextCustom(
                         text: 'Following',
-                        fontSize: 17,
+                        fontSize: 17.sp,
                         color: Colors.grey,
                         letterSpacing: .7),
                   ],
@@ -233,12 +234,12 @@ class _PostAndFollowingAndFollowers extends StatelessWidget {
                             state.postsUser?.followers != null
                                 ? TextCustom(
                                     text: state.postsUser!.followers.toString(),
-                                    fontSize: 22,
+                                    fontSize: 22.sp,
                                     fontWeight: FontWeight.w500)
                                 : const TextCustom(text: '0')),
-                    const TextCustom(
+                    TextCustom(
                         text: 'Followers',
-                        fontSize: 17,
+                        fontSize: 17.sp,
                         color: Colors.grey,
                         letterSpacing: .7),
                   ],
@@ -268,10 +269,10 @@ class _UsernameAndDescription extends StatelessWidget {
                         text: state.user!.username != ''
                             ? state.user!.username
                             : 'User',
-                        fontSize: 22,
+                        fontSize: 22.sp,
                         fontWeight: FontWeight.w500)
                     : const CircularProgressIndicator())),
-        const SizedBox(height: 5.0),
+        SizedBox(height: 5.h),
         Center(
           child: BlocBuilder<UserBloc, UserState>(
               builder: (_, state) => (state.user?.description != null)
@@ -279,7 +280,7 @@ class _UsernameAndDescription extends StatelessWidget {
                       text: (state.user?.description != ''
                           ? state.user!.description
                           : 'Description'),
-                      fontSize: 17,
+                      fontSize: 17.sp,
                       color: Colors.grey)
                   : const CircularProgressIndicator()),
         ),
@@ -299,12 +300,12 @@ class _CoverAndProfile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: 200,
+      height: 200.h,
       width: size.width,
       child: Stack(
         children: [
           SizedBox(
-            height: 170,
+            height: 170.h,
             width: size.width,
             child: BlocBuilder<UserBloc, UserState>(
                 builder: (_, state) =>
@@ -314,31 +315,31 @@ class _CoverAndProfile extends StatelessWidget {
                             image: NetworkImage(
                                 Environment.baseUrl + state.user!.cover))
                         : Container(
-                            height: 170,
+                            height: 170.h,
                             width: size.width,
                             color: CustomColors.primary.withOpacity(.7),
                           )),
           ),
           Positioned(
-            bottom: 28,
+            bottom: 28.h,
             child: Container(
-              height: 20,
+              height: 20.h,
               width: size.width,
-              decoration: const BoxDecoration(
+              decoration: BoxDecoration(
                   color: Colors.white,
                   borderRadius:
-                      BorderRadius.vertical(top: Radius.circular(20.0))),
+                      BorderRadius.vertical(top: Radius.circular(20.r))),
             ),
           ),
           Positioned(
             bottom: 0,
             child: Container(
               alignment: Alignment.center,
-              height: 100,
+              height: 100.h,
               width: size.width,
               child: Container(
-                height: 100,
-                width: 100,
+                height: 100.h,
+                width: 100.w,
                 decoration: const BoxDecoration(
                     color: Colors.green, shape: BoxShape.circle),
                 child: BlocBuilder<UserBloc, UserState>(
@@ -381,9 +382,9 @@ class _CoverAndProfile extends StatelessWidget {
                     color: Colors.white),
               )),
           Positioned(
-              right: 40,
+              right: 40.w,
               child: IconButton(
-                splashRadius: 20,
+                splashRadius: 20.r,
                 onPressed: () => modalSelectPicture(
                     context: context,
                     title: 'Update cover image',

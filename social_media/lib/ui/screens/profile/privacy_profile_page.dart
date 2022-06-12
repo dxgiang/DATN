@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:social_media/domain/blocs/blocs.dart';
 import 'package:social_media/ui/helpers/helpers.dart';
 import 'package:social_media/ui/screens/profile/widgets/item_profile.dart';
@@ -28,8 +29,8 @@ class PrivacyProgilePage extends StatelessWidget {
         backgroundColor: Colors.white,
         appBar: AppBar(
           backgroundColor: Colors.white,
-          title: const TextCustom(
-              text: 'Privacy', fontSize: 19, fontWeight: FontWeight.w500),
+          title: TextCustom(
+              text: 'Privacy', fontSize: 19.sp, fontWeight: FontWeight.w500),
           elevation: 0,
           leading: IconButton(
               onPressed: () => Navigator.pop(context),
@@ -38,17 +39,16 @@ class PrivacyProgilePage extends StatelessWidget {
         ),
         body: SafeArea(
           child: ListView(
-            padding:
-                const EdgeInsets.symmetric(horizontal: 15.0, vertical: 10.0),
+            padding: EdgeInsets.symmetric(horizontal: 15.w, vertical: 10.h),
             physics: const BouncingScrollPhysics(),
             children: [
-              const TextCustom(
+              TextCustom(
                   text: 'Account Privacy',
-                  fontSize: 16,
+                  fontSize: 16.sp,
                   fontWeight: FontWeight.w500),
-              const SizedBox(height: 10.0),
+              SizedBox(height: 10.h),
               SizedBox(
-                height: 50,
+                height: 50.h,
                 width: double.infinity,
                 child: InkWell(
                   child: BlocBuilder<UserBloc, UserState>(
@@ -56,14 +56,14 @@ class PrivacyProgilePage extends StatelessWidget {
                     builder: (_, state) => Row(
                       children: [
                         const Icon(Icons.lock_outlined),
-                        const SizedBox(width: 10),
-                        const TextCustom(text: 'Private account', fontSize: 17),
+                        SizedBox(width: 10.w),
+                        TextCustom(text: 'Private account', fontSize: 17.sp),
                         const Spacer(),
                         (state.user != null && state.user!.isPrivate == 1)
                             ? const Icon(Icons.radio_button_checked_rounded,
                                 color: CustomColors.primary)
                             : const Icon(Icons.radio_button_unchecked_rounded),
-                        const SizedBox(width: 10),
+                        SizedBox(width: 10.w),
                       ],
                     ),
                   ),
@@ -71,12 +71,12 @@ class PrivacyProgilePage extends StatelessWidget {
                 ),
               ),
               const Divider(),
-              const SizedBox(height: 10.0),
-              const TextCustom(
+              SizedBox(height: 10.h),
+              TextCustom(
                   text: 'Interactions',
-                  fontSize: 16,
+                  fontSize: 16.sp,
                   fontWeight: FontWeight.w500),
-              const SizedBox(height: 10.0),
+              SizedBox(height: 10.h),
               ItemProfile(
                   text: 'Comments',
                   icon: Icons.chat_bubble_outline_rounded,
@@ -94,12 +94,12 @@ class PrivacyProgilePage extends StatelessWidget {
               ItemProfile(
                   text: 'Messages', icon: Icons.send_rounded, onPressed: () {}),
               const Divider(),
-              const SizedBox(height: 10.0),
-              const TextCustom(
+              SizedBox(height: 10.h),
+              TextCustom(
                   text: 'Connections',
-                  fontSize: 16,
+                  fontSize: 16.sp,
                   fontWeight: FontWeight.w500),
-              const SizedBox(height: 10.0),
+              SizedBox(height: 10.h),
               ItemProfile(
                   text: 'Restricted accounts',
                   icon: Icons.no_accounts_outlined,

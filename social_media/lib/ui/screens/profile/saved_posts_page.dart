@@ -1,6 +1,7 @@
 import 'dart:ui';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:social_media/commons/assets.dart';
 import 'package:social_media/data/env/env.dart';
@@ -29,27 +30,27 @@ class SavedPostsPage extends StatelessWidget {
       ),
       body: SafeArea(
         child: ListView.builder(
-          padding: const EdgeInsets.symmetric(horizontal: 5.0),
+          padding: EdgeInsets.symmetric(horizontal: 5.w),
           physics: const BouncingScrollPhysics(),
           itemCount: savedPost.length,
           itemBuilder: (context, i) {
             final List<String> listImages = savedPost[i].images.split(',');
 
             return Padding(
-              padding: const EdgeInsets.only(bottom: 15.0),
+              padding: EdgeInsets.only(bottom: 15.h),
               child: SizedBox(
-                height: 350,
+                height: 350.h,
                 width: size.width,
                 child: Stack(
                   children: [
                     ClipRRect(
-                      borderRadius: BorderRadius.circular(15.0),
+                      borderRadius: BorderRadius.circular(15.r),
                       child: CarouselSlider.builder(
                         itemCount: listImages.length,
                         options: CarouselOptions(
                           viewportFraction: 1.0,
                           enableInfiniteScroll: false,
-                          height: 350,
+                          height: 350.h,
                           scrollPhysics: const BouncingScrollPhysics(),
                           autoPlay: false,
                         ),
@@ -63,7 +64,7 @@ class SavedPostsPage extends StatelessWidget {
                       ),
                     ),
                     Padding(
-                      padding: const EdgeInsets.only(left: 10.0, top: 5.0),
+                      padding: EdgeInsets.only(left: 10.w, top: 5.h),
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
@@ -73,7 +74,7 @@ class SavedPostsPage extends StatelessWidget {
                                 backgroundImage: NetworkImage(
                                     Environment.baseUrl + savedPost[i].avatar),
                               ),
-                              const SizedBox(width: 5.0),
+                              SizedBox(width: 5.w),
                               TextCustom(
                                   text: savedPost[i].username,
                                   fontWeight: FontWeight.w500,
@@ -81,7 +82,7 @@ class SavedPostsPage extends StatelessWidget {
                             ],
                           ),
                           IconButton(
-                              splashRadius: 20,
+                              splashRadius: 20.r,
                               onPressed: () {},
                               icon: const Icon(Icons.more_vert_rounded,
                                   color: Colors.white))
@@ -89,19 +90,18 @@ class SavedPostsPage extends StatelessWidget {
                       ),
                     ),
                     Positioned(
-                        bottom: 25,
+                        bottom: 25.h,
                         child: Container(
-                          padding: const EdgeInsets.symmetric(horizontal: 15.0),
-                          height: 45,
+                          padding: EdgeInsets.symmetric(horizontal: 15.r),
+                          height: 45.h,
                           width: size.width * .95,
                           child: ClipRRect(
-                            borderRadius: BorderRadius.circular(50.0),
+                            borderRadius: BorderRadius.circular(50.r),
                             child: BackdropFilter(
                               filter:
                                   ImageFilter.blur(sigmaX: 5.0, sigmaY: 5.0),
                               child: Container(
-                                padding: const EdgeInsets.symmetric(
-                                    horizontal: 10.0),
+                                padding: EdgeInsets.symmetric(horizontal: 10.w),
                                 color: Colors.white.withOpacity(0.2),
                                 child: Row(
                                   mainAxisAlignment:
@@ -112,20 +112,20 @@ class SavedPostsPage extends StatelessWidget {
                                         TextButton(
                                           onPressed: () {},
                                           child: Row(
-                                            children: const [
-                                              Icon(
+                                            children: [
+                                              const Icon(
                                                   Icons
                                                       .favorite_outline_rounded,
                                                   color: Colors.white),
-                                              SizedBox(width: 8.0),
+                                              SizedBox(width: 8.w),
                                               TextCustom(
                                                   text: '52k',
-                                                  fontSize: 16,
+                                                  fontSize: 16.sp,
                                                   color: Colors.white)
                                             ],
                                           ),
                                         ),
-                                        const SizedBox(width: 20.0),
+                                        SizedBox(width: 20.w),
                                         TextButton(
                                           onPressed: () {},
                                           child: Row(
@@ -133,10 +133,10 @@ class SavedPostsPage extends StatelessWidget {
                                               SvgPicture.asset(
                                                   SocialMediaAssets.messageIcon,
                                                   color: Colors.white),
-                                              const SizedBox(width: 5.0),
-                                              const TextCustom(
+                                              SizedBox(width: 5.w),
+                                              TextCustom(
                                                   text: '1.2k',
-                                                  fontSize: 16,
+                                                  fontSize: 16.sp,
                                                   color: Colors.white)
                                             ],
                                           ),
@@ -149,7 +149,7 @@ class SavedPostsPage extends StatelessWidget {
                                             onPressed: () {},
                                             icon: SvgPicture.asset(
                                                 SocialMediaAssets.sendIcon,
-                                                height: 24,
+                                                height: 24.h,
                                                 color: Colors.white)),
                                         IconButton(
                                             onPressed: () {},

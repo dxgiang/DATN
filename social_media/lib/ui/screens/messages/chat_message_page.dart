@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:social_media/domain/blocs/blocs.dart';
 import 'package:social_media/data/env/env.dart';
@@ -112,14 +113,14 @@ class _ChatMessagesPageState extends State<ChatMessagesPage>
                 TextCustom(
                     text: widget.usernameTarget,
                     fontWeight: FontWeight.w500,
-                    fontSize: 21),
+                    fontSize: 21.sp),
               ],
             ),
           ],
         ),
         elevation: 0,
         leading: IconButton(
-            splashRadius: 20,
+            splashRadius: 20.r,
             onPressed: () {
               Navigator.pop(context);
             },
@@ -130,7 +131,7 @@ class _ChatMessagesPageState extends State<ChatMessagesPage>
             backgroundImage:
                 NetworkImage(Environment.baseUrl + widget.avatarTarget),
           ),
-          const SizedBox(width: 10.0)
+          SizedBox(width: 10.w)
         ],
       ),
       body: Column(
@@ -170,7 +171,7 @@ class _ChatMessagesPageState extends State<ChatMessagesPage>
     final chatBloc = BlocProvider.of<ChatBloc>(context);
 
     return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 5.0),
+      padding: EdgeInsets.symmetric(horizontal: 5.w),
       child: Row(
         children: [
           Flexible(
@@ -188,7 +189,7 @@ class _ChatMessagesPageState extends State<ChatMessagesPage>
               decoration: InputDecoration(
                   border: InputBorder.none,
                   hintText: 'Write a message',
-                  hintStyle: GoogleFonts.roboto(fontSize: 17)),
+                  hintStyle: GoogleFonts.roboto(fontSize: 17.sp)),
             ),
           )),
           BlocBuilder<ChatBloc, ChatState>(

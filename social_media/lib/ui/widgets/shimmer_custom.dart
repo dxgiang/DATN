@@ -9,7 +9,7 @@ class ShimmerCustom extends StatelessWidget {
       baseColor: Colors.white,
       highlightColor: const Color(0xFFF3F3F3),
       child: Container(
-        height: 50,
+        height: 50.h,
         width: MediaQuery.of(context).size.width,
         decoration: BoxDecoration(color: Colors.grey[200]),
       ),

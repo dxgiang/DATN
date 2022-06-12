@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:social_media/data/env/env.dart';
 import 'package:social_media/domain/blocs/post/post_bloc.dart';
@@ -44,17 +45,17 @@ class _SearchPageState extends State<SearchPage> {
       body: SafeArea(
         child: ListView(
           physics: const BouncingScrollPhysics(),
-          padding: const EdgeInsets.only(top: 10.0),
+          padding: EdgeInsets.only(top: 10.h),
           children: [
             Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 15.0),
+              padding: EdgeInsets.symmetric(horizontal: 15.w),
               child: Container(
-                padding: const EdgeInsets.only(left: 10.0, right: 10.0),
-                height: 45,
+                padding: EdgeInsets.only(left: 10.w, right: 10.w),
+                height: 45.h,
                 width: size.width,
                 decoration: BoxDecoration(
                     color: Colors.grey[100],
-                    borderRadius: BorderRadius.circular(10.0)),
+                    borderRadius: BorderRadius.circular(10.r)),
                 child: BlocBuilder<PostBloc, PostState>(
                   builder: (context, state) => TextField(
                     controller: _searchController,
@@ -69,13 +70,13 @@ class _SearchPageState extends State<SearchPage> {
                     decoration: InputDecoration(
                         border: InputBorder.none,
                         hintText: 'Search',
-                        hintStyle: GoogleFonts.roboto(fontSize: 17),
+                        hintStyle: GoogleFonts.roboto(fontSize: 17.sp),
                         suffixIcon: const Icon(Icons.search_rounded)),
                   ),
                 ),
               ),
             ),
-            const SizedBox(height: 10.0),
+            SizedBox(height: 10.h),
             BlocBuilder<PostBloc, PostState>(
                 buildWhen: (previous, current) => previous != current,
                 builder: (context, state) => !state.isSearchFriend
@@ -107,8 +108,7 @@ class _SearchPageState extends State<SearchPage> {
 
         if (snapshot.data!.isEmpty) {
           return ListTile(
-            title: TextCustom(
-                text: 'No results for ${_searchController.text}'),
+            title: TextCustom(text: 'No results for ${_searchController.text}'),
           );
         }
 
@@ -129,7 +129,7 @@ class _ListUsers extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListView.builder(
-      padding: const EdgeInsets.symmetric(horizontal: 5),
+      padding: EdgeInsets.symmetric(horizontal: 5.w),
       physics: const NeverScrollableScrollPhysics(),
       shrinkWrap: true,
       itemCount: listUser.length,
@@ -142,18 +142,18 @@ class _ListUsers extends StatelessWidget {
                     page: ProfileAnotherUserPage(idUser: listUser[i].uid)));
           },
           child: Padding(
-            padding: const EdgeInsets.only(bottom: 8.0),
+            padding: EdgeInsets.only(bottom: 8.h),
             child: Container(
-              padding: const EdgeInsets.only(left: 5.0),
-              height: 70,
+              padding: EdgeInsets.only(left: 5.w),
+              height: 70.h,
               child: Row(
                 children: [
                   CircleAvatar(
-                    radius: 30,
+                    radius: 30.r,
                     backgroundImage:
                         NetworkImage(Environment.baseUrl + listUser[i].avatar),
                   ),
-                  const SizedBox(width: 10.0),
+                  SizedBox(width: 10.w),
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     mainAxisAlignment: MainAxisAlignment.center,
@@ -214,12 +214,12 @@ class _ShimerSearch extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(
-      children: const [
-        ShimmerCustom(),
-        SizedBox(height: 10.0),
-        ShimmerCustom(),
-        SizedBox(height: 10.0),
-        ShimmerCustom(),
+      children: [
+        const ShimmerCustom(),
+        SizedBox(height: 10.h),
+        const ShimmerCustom(),
+        SizedBox(height: 10.h),
+        const ShimmerCustom(),
       ],
     );
   }

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:social_media/ui/helpers/helpers.dart';
 import 'package:social_media/ui/screens/profile/setting_profile_page.dart';
 import 'package:social_media/ui/themes/color_custom.dart';
@@ -7,33 +8,33 @@ import 'package:social_media/ui/widgets/widgets.dart';
 modalProfileSetting(BuildContext context, Size size) {
   showModalBottomSheet(
     context: context,
-    shape: const RoundedRectangleBorder(
+    shape: RoundedRectangleBorder(
         borderRadius:
-            BorderRadiusDirectional.vertical(top: Radius.circular(20.0))),
+            BorderRadiusDirectional.vertical(top: Radius.circular(20.r))),
     backgroundColor: Colors.white,
     builder: (context) => Container(
       height: size.height * .36,
       width: size.width,
-      decoration: const BoxDecoration(
+      decoration: BoxDecoration(
           color: Colors.white,
           borderRadius:
-              BorderRadiusDirectional.vertical(top: Radius.circular(20.0))),
+              BorderRadiusDirectional.vertical(top: Radius.circular(20.r))),
       child: Padding(
-        padding: const EdgeInsets.symmetric(vertical: 20.0, horizontal: 10.0),
+        padding: EdgeInsets.symmetric(vertical: 20.h, horizontal: 10.w),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Align(
               alignment: Alignment.center,
               child: Container(
-                height: 4,
-                width: 35,
+                height: 4.h,
+                width: 35.w,
                 decoration: BoxDecoration(
                     color: Colors.grey[400],
-                    borderRadius: BorderRadius.circular(50.0)),
+                    borderRadius: BorderRadius.circular(50.r)),
               ),
             ),
-            const SizedBox(height: 10.0),
+            SizedBox(height: 10.h),
             Item(
               icon: Icons.settings,
               text: 'Settings',
@@ -92,7 +93,7 @@ class Item extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: 45,
+      height: 45.h,
       width: size.width,
       child: TextButton(
         onPressed: onPressed,
@@ -102,8 +103,8 @@ class Item extends StatelessWidget {
             child: Row(
               children: [
                 Icon(icon, color: Colors.black87),
-                const SizedBox(width: 10.0),
-                TextCustom(text: text, fontSize: 17)
+                SizedBox(width: 10.w),
+                TextCustom(text: text, fontSize: 17.sp)
               ],
             )),
       ),

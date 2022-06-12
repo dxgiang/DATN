@@ -2,6 +2,7 @@ import 'dart:ui';
 
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:social_media/data/env/env.dart';
 import 'package:social_media/domain/models/response/response_list_stories.dart';
@@ -112,12 +113,12 @@ class _ViewStoryPageState extends State<ViewStoryPage>
                         },
                       ),
                     ),
-                    const SizedBox(height: 10.0),
+                    SizedBox(height: 10.h),
                     Padding(
                       padding: const EdgeInsets.all(8.0),
                       child: Column(
                         children: [
-                          const SizedBox(height: 30.0),
+                          SizedBox(height: 30.h),
 
                           // * Animated Line //
                           Row(
@@ -125,8 +126,8 @@ class _ViewStoryPageState extends State<ViewStoryPage>
                                 snapshot.data!.length,
                                 (index) => Expanded(
                                         child: Padding(
-                                      padding: const EdgeInsets.symmetric(
-                                          horizontal: 7.0),
+                                      padding:
+                                          EdgeInsets.symmetric(horizontal: 7.w),
                                       child: AnimatedLineStory(
                                           index: index,
                                           selectedIndex: _currentStory,
@@ -135,17 +136,17 @@ class _ViewStoryPageState extends State<ViewStoryPage>
                                     ))),
                           ),
 
-                          const SizedBox(height: 20.0),
+                          SizedBox(height: 20.h),
                           Row(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               CircleAvatar(
-                                radius: 20,
+                                radius: 20.r,
                                 backgroundImage: NetworkImage(
                                     Environment.baseUrl +
                                         widget.storyHome.avatar),
                               ),
-                              const SizedBox(width: 10.0),
+                              SizedBox(width: 10.w),
                               Expanded(
                                 child: Column(
                                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -153,10 +154,10 @@ class _ViewStoryPageState extends State<ViewStoryPage>
                                     TextCustom(
                                         text: widget.storyHome.username,
                                         color: Colors.white),
-                                    const TextCustom(
+                                    TextCustom(
                                         text: '5 hours ago',
                                         color: Colors.white70,
-                                        fontSize: 14)
+                                        fontSize: 14.sp)
                                   ],
                                 ),
                               ),
@@ -174,7 +175,7 @@ class _ViewStoryPageState extends State<ViewStoryPage>
                             children: [
                               Expanded(
                                   child: ClipRRect(
-                                borderRadius: BorderRadius.circular(10.0),
+                                borderRadius: BorderRadius.circular(10.r),
                                 child: BackdropFilter(
                                   filter:
                                       ImageFilter.blur(sigmaX: 10, sigmaY: 10),
@@ -183,7 +184,7 @@ class _ViewStoryPageState extends State<ViewStoryPage>
                                     child: TextField(
                                       decoration: InputDecoration(
                                           contentPadding:
-                                              const EdgeInsets.only(left: 20.0),
+                                              EdgeInsets.only(left: 20.w),
                                           hintText: 'Write a comment',
                                           hintStyle: GoogleFonts.roboto(
                                               color: Colors.white)),
@@ -191,7 +192,7 @@ class _ViewStoryPageState extends State<ViewStoryPage>
                                   ),
                                 ),
                               )),
-                              const SizedBox(width: 10.0),
+                              SizedBox(width: 10.w),
                               IconButton(
                                   onPressed: () {},
                                   icon: const Icon(Icons.send_rounded,

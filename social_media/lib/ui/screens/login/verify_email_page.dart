@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:pin_code_fields/pin_code_fields.dart';
 import 'package:social_media/commons/assets.dart';
@@ -46,36 +47,35 @@ class VerifyEmailPage extends StatelessWidget {
         ),
         body: SafeArea(
           child: Padding(
-            padding:
-                const EdgeInsets.symmetric(horizontal: 20.0, vertical: 10.0),
+            padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 10.h),
             child: SingleChildScrollView(
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Container(
                     padding: const EdgeInsets.all(20.0),
-                    height: 300,
+                    height: 300.h,
                     width: size.width,
                     decoration: BoxDecoration(
                         color: Colors.blue.withOpacity(.1),
-                        borderRadius: BorderRadius.circular(8.0)),
+                        borderRadius: BorderRadius.circular(8.r)),
                     child:
                         SvgPicture.asset(SocialMediaAssets.undrawOpenedEmail),
                   ),
-                  const SizedBox(height: 20.0),
-                  const TextCustom(
+                  SizedBox(height: 20.h),
+                  TextCustom(
                       text: 'Verify your email',
-                      fontSize: 20,
+                      fontSize: 20.sp,
                       fontWeight: FontWeight.w500),
-                  const SizedBox(height: 20.0),
+                  SizedBox(height: 20.h),
                   TextCustom(
                     text:
                         'Please enter the 5-digit code sent to your email. $email',
                     maxLines: 3,
-                    fontSize: 16,
+                    fontSize: 16.sp,
                     color: Colors.grey,
                   ),
-                  const SizedBox(height: 30.0),
+                  SizedBox(height: 30.h),
                   PinCodeTextField(
                       appContext: context,
                       length: 5,

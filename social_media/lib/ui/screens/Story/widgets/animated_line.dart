@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class AnimatedLineStory extends StatelessWidget {
   final int index;
@@ -15,7 +16,7 @@ class AnimatedLineStory extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ClipRRect(
-      borderRadius: BorderRadius.circular(5.0),
+      borderRadius: BorderRadius.circular(5.r),
       child: AnimatedBuilder(
         animation: animationController,
         builder: (context, _) {

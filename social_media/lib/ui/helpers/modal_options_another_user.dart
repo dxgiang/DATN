@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:social_media/ui/widgets/widgets.dart';
 
 void modalOptionsAnotherUser(BuildContext context) {
@@ -8,8 +9,8 @@ void modalOptionsAnotherUser(BuildContext context) {
     backgroundColor: Colors.transparent,
     shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(25.0)),
     builder: (context) => Container(
-      height: 237,
-      margin: const EdgeInsets.only(left: 10.0, right: 10.0, bottom: 20.0),
+      height: 237.h,
+      margin: EdgeInsets.only(left: 10.w, right: 10.w, bottom: 20.h),
       decoration: BoxDecoration(
           color: Colors.white, borderRadius: BorderRadius.circular(25.0)),
       child: Padding(
@@ -18,7 +19,8 @@ void modalOptionsAnotherUser(BuildContext context) {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Center(
-              child: Container(height: 5, width: 40, color: Colors.grey[300]),
+              child:
+                  Container(height: 5.h, width: 40.w, color: Colors.grey[300]),
             ),
             SizedBox(
               width: double.infinity,
@@ -26,18 +28,18 @@ void modalOptionsAnotherUser(BuildContext context) {
                   onPressed: () {},
                   style: TextButton.styleFrom(
                       padding:
-                          const EdgeInsets.only(left: 0, top: 10, bottom: 10),
+                          EdgeInsets.only(left: 0, top: 10.h, bottom: 10.h),
                       primary: Colors.grey),
                   child: Align(
                       alignment: Alignment.centerLeft,
                       child: Row(
-                        children: const [
-                          Icon(Icons.report_gmailerrorred_rounded,
+                        children: [
+                          const Icon(Icons.report_gmailerrorred_rounded,
                               color: Colors.red),
-                          SizedBox(width: 10.0),
+                          SizedBox(width: 10.w),
                           TextCustom(
                               text: 'Report',
-                              fontSize: 17,
+                              fontSize: 17.sp,
                               color: Colors.red),
                         ],
                       ))),
@@ -48,15 +50,16 @@ void modalOptionsAnotherUser(BuildContext context) {
                   onPressed: () {},
                   style: TextButton.styleFrom(
                       padding:
-                          const EdgeInsets.only(left: 0, top: 10, bottom: 10),
+                          EdgeInsets.only(left: 0, top: 10.h, bottom: 10.h),
                       primary: Colors.grey),
                   child: Align(
                       alignment: Alignment.centerLeft,
                       child: Row(
-                        children: const [
-                          Icon(Icons.block_outlined, color: Colors.black87),
-                          SizedBox(width: 10.0),
-                          TextCustom(text: 'Block', fontSize: 17),
+                        children: [
+                          const Icon(Icons.block_outlined,
+                              color: Colors.black87),
+                          SizedBox(width: 10.w),
+                          TextCustom(text: 'Block', fontSize: 17.sp),
                         ],
                       ))),
             ),
@@ -66,16 +69,16 @@ void modalOptionsAnotherUser(BuildContext context) {
                   onPressed: () {},
                   style: TextButton.styleFrom(
                       padding:
-                          const EdgeInsets.only(left: 0, top: 10, bottom: 10),
+                          EdgeInsets.only(left: 0, top: 10.h, bottom: 10.h),
                       primary: Colors.grey),
                   child: Align(
                       alignment: Alignment.centerLeft,
                       child: Row(
-                        children: const [
-                          Icon(Icons.copy_all_rounded, color: Colors.black87),
-                          SizedBox(width: 10.0),
-                          TextCustom(
-                              text: 'Copy profile URL', fontSize: 17),
+                        children: [
+                          const Icon(Icons.copy_all_rounded,
+                              color: Colors.black87),
+                          SizedBox(width: 10.w),
+                          TextCustom(text: 'Copy profile URL', fontSize: 17.sp),
                         ],
                       ))),
             ),
@@ -85,16 +88,17 @@ void modalOptionsAnotherUser(BuildContext context) {
                   onPressed: () {},
                   style: TextButton.styleFrom(
                       padding:
-                          const EdgeInsets.only(left: 0, top: 10, bottom: 10),
+                          EdgeInsets.only(left: 0, top: 10.h, bottom: 10.h),
                       primary: Colors.grey),
                   child: Align(
                       alignment: Alignment.centerLeft,
                       child: Row(
-                        children: const [
-                          Icon(Icons.share_outlined, color: Colors.black87),
-                          SizedBox(width: 10.0),
+                        children: [
+                          const Icon(Icons.share_outlined,
+                              color: Colors.black87),
+                          SizedBox(width: 10.w),
                           TextCustom(
-                              text: 'Share This Profile', fontSize: 17),
+                              text: 'Share This Profile', fontSize: 17.sp),
                         ],
                       ))),
             ),

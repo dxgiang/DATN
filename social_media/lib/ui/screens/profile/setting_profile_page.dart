@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:social_media/domain/blocs/blocs.dart';
 import 'package:social_media/ui/helpers/helpers.dart';
 import 'package:social_media/ui/screens/login/started_page.dart';
 import 'package:social_media/ui/screens/profile/account_profile_page.dart';
 import 'package:social_media/ui/screens/profile/change_password_page.dart';
+import 'package:social_media/ui/screens/profile/language_page.dart';
 import 'package:social_media/ui/screens/profile/privacy_profile_page.dart';
 import 'package:social_media/ui/screens/profile/theme_profile_page.dart';
 import 'package:social_media/ui/screens/profile/widgets/item_profile.dart';
@@ -24,8 +26,10 @@ class SettingProfilePage extends StatelessWidget {
       backgroundColor: Colors.white,
       appBar: AppBar(
         backgroundColor: Colors.white,
-        title: const TextCustom(
-            text: 'Configuration', fontSize: 19, fontWeight: FontWeight.w500),
+        title: TextCustom(
+            text: 'Configuration',
+            fontSize: 19.sp,
+            fontWeight: FontWeight.w500),
         elevation: 0,
         leading: IconButton(
             onPressed: () => Navigator.pop(context),
@@ -34,14 +38,14 @@ class SettingProfilePage extends StatelessWidget {
       ),
       body: SafeArea(
         child: ListView(
-          padding: const EdgeInsets.symmetric(horizontal: 15.0, vertical: 10.0),
+          padding: EdgeInsets.symmetric(horizontal: 15.w, vertical: 10.h),
           children: [
             Container(
-              height: 35,
+              height: 35.h,
               width: double.infinity,
               decoration: BoxDecoration(
                   color: Colors.grey[50],
-                  borderRadius: BorderRadius.circular(10.0)),
+                  borderRadius: BorderRadius.circular(10.r)),
               child: TextFormField(
                 decoration: InputDecoration(
                     border: InputBorder.none,
@@ -51,7 +55,7 @@ class SettingProfilePage extends StatelessWidget {
                     prefixIcon: const Icon(Icons.search)),
               ),
             ),
-            const SizedBox(height: 15.0),
+            SizedBox(height: 15.h),
             ItemProfile(
                 text: 'Follow and invite a friend',
                 icon: Icons.person_add_alt,
@@ -84,25 +88,30 @@ class SettingProfilePage extends StatelessWidget {
                 icon: Icons.info_outline_rounded,
                 onPressed: () {}),
             ItemProfile(
+                text: 'Languages',
+                icon: Icons.language_outlined,
+                onPressed: () => Navigator.push(
+                    context, routeSlide(page: const LanguagePage()))),
+            ItemProfile(
                 text: 'Themes',
                 icon: Icons.palette_outlined,
                 onPressed: () => Navigator.push(
                     context, routeSlide(page: const ThemeProfilePage()))),
-            const SizedBox(height: 20.0),
+            SizedBox(height: 20.h),
             Row(
-              children: const [
-                Icon(Icons.copyright_outlined),
-                SizedBox(width: 5.0),
+              children: [
+                const Icon(Icons.copyright_outlined),
+                SizedBox(width: 5.w),
                 TextCustom(
                     text: 'SOCIAL MEDIA APP',
-                    fontSize: 17,
+                    fontSize: 17.sp,
                     fontWeight: FontWeight.w500),
               ],
             ),
-            const SizedBox(height: 30.0),
-            const TextCustom(
-                text: 'Sessions', fontSize: 17, fontWeight: FontWeight.w500),
-            const SizedBox(height: 10.0),
+            SizedBox(height: 30.h),
+            TextCustom(
+                text: 'Sessions', fontSize: 17.sp, fontWeight: FontWeight.w500),
+            SizedBox(height: 10.h),
             ItemProfile(
                 text: 'Add or change account',
                 icon: Icons.add,

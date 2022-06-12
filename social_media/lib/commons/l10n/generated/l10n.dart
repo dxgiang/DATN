@@ -1,7 +1,16 @@
+// GENERATED CODE - DO NOT MODIFY BY HAND
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
-
 import 'intl/messages_all.dart';
+
+// **************************************************************************
+// Generator: Flutter Intl IDE plugin
+// Made by Localizely
+// **************************************************************************
+
+// ignore_for_file: non_constant_identifier_names, lines_longer_than_80_chars
+// ignore_for_file: join_return_with_assignment, prefer_final_in_for_each
+// ignore_for_file: avoid_redundant_argument_values, avoid_escaping_inner_quotes
 
 class S {
   S();
@@ -39,6 +48,36 @@ class S {
 
   static S? maybeOf(BuildContext context) {
     return Localizations.of<S>(context, S);
+  }
+
+  /// `Tiếng Việt`
+  String get language {
+    return Intl.message(
+      'Tiếng Việt',
+      name: 'language',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Ngôn ngữ`
+  String get settings_page_language {
+    return Intl.message(
+      'Ngôn ngữ',
+      name: 'settings_page_language',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Bảo mật`
+  String get settings_page_privacy {
+    return Intl.message(
+      'Bảo mật',
+      name: 'settings_page_privacy',
+      desc: '',
+      args: [],
+    );
   }
 }
 

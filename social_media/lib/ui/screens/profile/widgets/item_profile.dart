@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:social_media/ui/widgets/widgets.dart';
 
 class ItemProfile extends StatelessWidget {
@@ -28,8 +29,8 @@ class ItemProfile extends StatelessWidget {
         child: Row(
           children: [
             Icon(icon, color: colorText),
-            const SizedBox(width: 10.0),
-            TextCustom(text: text, fontSize: 17, color: colorText)
+            SizedBox(width: 10.w),
+            TextCustom(text: text, fontSize: 17.sp, color: colorText)
           ],
         ),
       ),

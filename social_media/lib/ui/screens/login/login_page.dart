@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:social_media/domain/blocs/blocs.dart';
 import 'package:social_media/ui/helpers/helpers.dart';
 import 'package:social_media/ui/screens/home/home_page.dart';
@@ -77,42 +78,41 @@ class _LoginPageState extends State<LoginPage> {
         ),
         body: SafeArea(
           child: Padding(
-            padding:
-                const EdgeInsets.symmetric(horizontal: 20.0, vertical: 10.0),
+            padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 10.h),
             child: SingleChildScrollView(
               child: Form(
                 key: _keyForm,
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    const SizedBox(height: 10.0),
-                    const TextCustom(
+                    SizedBox(height: 10.h),
+                    TextCustom(
                         text: 'Welcome back!',
                         letterSpacing: 1.5,
                         fontWeight: FontWeight.w600,
-                        fontSize: 30,
+                        fontSize: 30.sp,
                         color: CustomColors.secundary),
-                    const SizedBox(height: 10.0),
-                    const TextCustom(
+                    SizedBox(height: 10.h),
+                    TextCustom(
                       text: 'Log in to continue.',
-                      fontSize: 18,
+                      fontSize: 18.sp,
                       letterSpacing: 1.0,
                     ),
-                    const SizedBox(height: 70.0),
+                    SizedBox(height: 70.h),
                     TextFieldCustom(
                       controller: emailController,
                       hintText: 'Email',
                       keyboardType: TextInputType.emailAddress,
                       validator: validatedEmail,
                     ),
-                    const SizedBox(height: 50.0),
+                    SizedBox(height: 50.h),
                     TextFieldCustom(
                       controller: passwordController,
                       hintText: 'Password',
                       isPassword: true,
                       validator: passwordValidator,
                     ),
-                    const SizedBox(height: 80.0),
+                    SizedBox(height: 80.h),
                     BtnCustom(
                       text: 'Log in',
                       width: size.width,
@@ -123,7 +123,7 @@ class _LoginPageState extends State<LoginPage> {
                         }
                       },
                     ),
-                    const SizedBox(height: 30.0),
+                    SizedBox(height: 30.h),
                     Center(
                         child: InkWell(
                             onTap: () => Navigator.push(context,

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:social_media/commons/assets.dart';
 import 'package:social_media/ui/helpers/helpers.dart';
@@ -20,17 +21,17 @@ class StartedPage extends StatelessWidget {
         child: Column(
           children: [
             Container(
-              padding: const EdgeInsets.symmetric(horizontal: 20),
-              height: 55,
+              padding: EdgeInsets.symmetric(horizontal: 20.w),
+              height: 55.h,
               width: size.width,
               child: Row(
                 children: [
-                  Image.asset(SocialMediaAssets.logoBlack, height: 30),
+                  Image.asset(SocialMediaAssets.logoBlack, height: 30.h),
                   const TextCustom(
                       text: 'Social',
                       fontWeight: FontWeight.w500,
                       color: CustomColors.primary),
-                  const TextCustom(text: ' Media', fontSize: 17)
+                  TextCustom(text: ' Media', fontSize: 17.sp)
                 ],
               ),
             ),
@@ -41,65 +42,63 @@ class StartedPage extends StatelessWidget {
                 child: SvgPicture.asset(SocialMediaAssets.undrawPostOnline),
               ),
             ),
-            const TextCustom(
+            TextCustom(
               text: 'Welcome !',
               letterSpacing: 2.0,
               color: CustomColors.secundary,
               fontWeight: FontWeight.w600,
-              fontSize: 30,
+              fontSize: 30.sp,
             ),
-            const SizedBox(height: 10.0),
-            const Padding(
-              padding: EdgeInsets.symmetric(horizontal: 20.0),
+            SizedBox(height: 10.h),
+            Padding(
+              padding: EdgeInsets.symmetric(horizontal: 20.w),
               child: TextCustom(
                 text:
                     'The best place to post your stories and share your experiences.',
                 textAlign: TextAlign.center,
                 maxLines: 2,
-                fontSize: 17,
+                fontSize: 17.sp,
               ),
             ),
-            const SizedBox(height: 40.0),
+            SizedBox(height: 40.h),
             Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 30.0),
+              padding: EdgeInsets.symmetric(horizontal: 30.w),
               child: SizedBox(
-                height: 50,
+                height: 50.h,
                 width: size.width,
                 child: TextButton(
                   style: TextButton.styleFrom(
                       backgroundColor: CustomColors.secundary,
                       shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(12.0))),
-                  child: const TextCustom(
-                      text: 'Log in',
-                      color: Colors.white,
-                      fontSize: 20),
+                          borderRadius: BorderRadius.circular(12.r))),
+                  child: TextCustom(
+                      text: 'Log in', color: Colors.white, fontSize: 20.sp),
                   onPressed: () => Navigator.push(
                       context, routeSlide(page: const LoginPage())),
                 ),
               ),
             ),
-            const SizedBox(height: 20.0),
+            SizedBox(height: 20.h),
             Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 30.0),
+              padding: EdgeInsets.symmetric(horizontal: 30.w),
               child: Container(
-                height: 50,
+                height: 50.h,
                 width: size.width,
                 decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(12.0),
-                    border:
-                        Border.all(color: CustomColors.secundary, width: 1.5)),
+                    borderRadius: BorderRadius.circular(12.r),
+                    border: Border.all(
+                        color: CustomColors.secundary, width: 1.5.w)),
                 child: TextButton(
-                  child: const TextCustom(
+                  child: TextCustom(
                       text: 'Register',
                       color: CustomColors.secundary,
-                      fontSize: 20),
+                      fontSize: 20.sp),
                   onPressed: () => Navigator.push(
                       context, routeSlide(page: const RegisterPage())),
                 ),
               ),
             ),
-            const SizedBox(height: 20.0),
+            SizedBox(height: 20.h),
           ],
         ),
       ),

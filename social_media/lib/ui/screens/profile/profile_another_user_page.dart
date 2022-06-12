@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:social_media/domain/blocs/blocs.dart';
 import 'package:social_media/data/env/env.dart';
 import 'package:social_media/domain/models/response/response_user_search.dart';
@@ -63,11 +64,11 @@ class _BodyUser extends StatelessWidget {
       physics: const BouncingScrollPhysics(),
       children: [
         _CoverAndProfile(user: responseUserSearch.anotherUser),
-        const SizedBox(height: 10.0),
+        SizedBox(height: 10.h),
         _UsernameAndDescription(user: responseUserSearch.anotherUser),
-        const SizedBox(height: 30.0),
+        SizedBox(height: 30.h),
         _PostAndFollowingAndFollowers(analytics: responseUserSearch.analytics),
-        const SizedBox(height: 30.0),
+        SizedBox(height: 30.h),
         _BtnFollowAndMessage(
           isFriend: responseUserSearch.isFriend,
           uidUser: responseUserSearch.anotherUser.uid,
@@ -75,14 +76,14 @@ class _BodyUser extends StatelessWidget {
           username: responseUserSearch.anotherUser.username,
           avatar: responseUserSearch.anotherUser.image,
         ),
-        const SizedBox(height: 20.0),
+        SizedBox(height: 20.h),
         Container(
-          padding: const EdgeInsets.symmetric(horizontal: 10.0),
-          height: 46,
+          padding: EdgeInsets.symmetric(horizontal: 10.w),
+          height: 46.h,
           child: Column(
             children: [
               const Icon(Icons.grid_on_rounded, size: 30),
-              const SizedBox(height: 5.0),
+              SizedBox(height: 5.h),
               Container(
                 height: 1,
                 color: Colors.grey[300],
@@ -90,7 +91,7 @@ class _BodyUser extends StatelessWidget {
             ],
           ),
         ),
-        const SizedBox(height: 5.0),
+        SizedBox(height: 5.h),
         _ListFotosAnotherProfile(
           posts: responseUserSearch.postsUser,
           isPrivate: responseUserSearch.anotherUser.isPrivate,
@@ -116,7 +117,7 @@ class _ListFotosAnotherProfile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 10.0),
+        padding: EdgeInsets.symmetric(horizontal: 10.w),
         child: isPrivate == 0 || isPrivate == 1 && isFriend == 1
             ? GridView.builder(
                 physics: const NeverScrollableScrollPhysics(),
@@ -144,22 +145,22 @@ class _ListFotosAnotherProfile extends StatelessWidget {
                 },
               )
             : SizedBox(
-                height: 100,
+                height: 100.h,
                 child: Row(
                   children: [
                     const Icon(Icons.lock_outline_rounded, size: 40),
-                    const SizedBox(width: 10.0),
+                    SizedBox(width: 10.w),
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       mainAxisAlignment: MainAxisAlignment.center,
-                      children: const [
-                        TextCustom(
+                      children: [
+                        const TextCustom(
                             text: 'This account is private',
                             fontWeight: FontWeight.w500),
                         TextCustom(
                             text: 'Follow this account to see their photos.',
                             color: Colors.grey,
-                            fontSize: 16),
+                            fontSize: 16.sp),
                       ],
                     )
                   ],
@@ -193,7 +194,7 @@ class _BtnFollowAndMessage extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.spaceAround,
       children: [
         Container(
-            height: 43,
+            height: 43.h,
             width: size.width * .5,
             decoration: BoxDecoration(
                 color: isFriend == 1 || isPendingFollowers == 1
@@ -203,15 +204,15 @@ class _BtnFollowAndMessage extends StatelessWidget {
                     color: isFriend == 1 || isPendingFollowers == 1
                         ? Colors.grey
                         : Colors.white),
-                borderRadius: BorderRadius.circular(50.0)),
+                borderRadius: BorderRadius.circular(50.r)),
             child: isPendingFollowers == 0
                 ? TextButton(
                     style: TextButton.styleFrom(
                         shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(50.0))),
+                            borderRadius: BorderRadius.circular(50.r))),
                     child: TextCustom(
                         text: isFriend == 1 ? 'Following' : 'Follow',
-                        fontSize: 20,
+                        fontSize: 20.sp,
                         color: isFriend == 1 ? Colors.black : Colors.white),
                     onPressed: () {
                       if (isFriend == 1) {
@@ -224,22 +225,24 @@ class _BtnFollowAndMessage extends StatelessWidget {
                 : TextButton(
                     style: TextButton.styleFrom(
                         shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(50.0))),
-                    child: const TextCustom(
-                        text: 'Pendiente', fontSize: 20, color: Colors.black),
+                            borderRadius: BorderRadius.circular(50.r))),
+                    child: TextCustom(
+                        text: 'Pendiente',
+                        fontSize: 20.sp,
+                        color: Colors.black),
                     onPressed: () {},
                   )),
         Container(
-          height: 43,
+          height: 43.h,
           width: size.width * .4,
           decoration: BoxDecoration(
               border: Border.all(color: Colors.grey),
-              borderRadius: BorderRadius.circular(50.0)),
+              borderRadius: BorderRadius.circular(50.r)),
           child: TextButton(
             style: TextButton.styleFrom(
                 shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(50.0))),
-            child: const TextCustom(text: 'Message', fontSize: 20),
+                    borderRadius: BorderRadius.circular(50.r))),
+            child: TextCustom(text: 'Message', fontSize: 20.sp),
             onPressed: () => Navigator.push(
                 context,
                 routeFade(
@@ -264,7 +267,7 @@ class _PostAndFollowingAndFollowers extends StatelessWidget {
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
     return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 30.0),
+      padding: EdgeInsets.symmetric(horizontal: 30.w),
       width: size.width,
       child: Column(
         children: [
@@ -275,30 +278,29 @@ class _PostAndFollowingAndFollowers extends StatelessWidget {
                 children: [
                   TextCustom(
                       text: analytics.posters.toString(),
-                      fontSize: 22,
+                      fontSize: 22.sp,
                       fontWeight: FontWeight.w500),
-                  const TextCustom(
-                      text: 'Post', fontSize: 17, color: Colors.grey),
+                  TextCustom(text: 'Post', fontSize: 17.sp, color: Colors.grey),
                 ],
               ),
               Column(
                 children: [
                   TextCustom(
                       text: analytics.friends.toString(),
-                      fontSize: 22,
+                      fontSize: 22.sp,
                       fontWeight: FontWeight.w500),
-                  const TextCustom(
-                      text: 'Following', fontSize: 17, color: Colors.grey),
+                  TextCustom(
+                      text: 'Following', fontSize: 17.sp, color: Colors.grey),
                 ],
               ),
               Column(
                 children: [
                   TextCustom(
                       text: analytics.followers.toString(),
-                      fontSize: 22,
+                      fontSize: 22.sp,
                       fontWeight: FontWeight.w500),
-                  const TextCustom(
-                      text: 'Followers', fontSize: 17, color: Colors.grey),
+                  TextCustom(
+                      text: 'Followers', fontSize: 17.sp, color: Colors.grey),
                 ],
               ),
             ],
@@ -322,12 +324,12 @@ class _UsernameAndDescription extends StatelessWidget {
         Center(
             child: TextCustom(
                 text: user.username,
-                fontSize: 22,
+                fontSize: 22.sp,
                 fontWeight: FontWeight.w500)),
-        const SizedBox(height: 5.0),
+        SizedBox(height: 5.h),
         Center(
             child: TextCustom(
-                text: user.description, fontSize: 17, color: Colors.grey)),
+                text: user.description, fontSize: 17.sp, color: Colors.grey)),
       ],
     );
   }
@@ -343,42 +345,42 @@ class _CoverAndProfile extends StatelessWidget {
     final size = MediaQuery.of(context).size;
 
     return SizedBox(
-      height: 200,
+      height: 200.h,
       width: size.width,
       child: Stack(
         children: [
           SizedBox(
-              height: 170,
+              height: 170.h,
               width: size.width,
               child: user.cover != ''
                   ? Image(
                       fit: BoxFit.cover,
                       image: NetworkImage(Environment.baseUrl + user.cover))
                   : Container(
-                      height: 170,
+                      height: 170.h,
                       width: size.width,
                       color: Colors.blueGrey[200],
                     )),
           Positioned(
-            bottom: 28,
+            bottom: 28.h,
             child: Container(
-              height: 20,
+              height: 20.h,
               width: size.width,
-              decoration: const BoxDecoration(
+              decoration: BoxDecoration(
                   color: Colors.white,
                   borderRadius:
-                      BorderRadius.vertical(top: Radius.circular(20.0))),
+                      BorderRadius.vertical(top: Radius.circular(20.r))),
             ),
           ),
           Positioned(
             bottom: 0,
             child: Container(
               alignment: Alignment.center,
-              height: 100,
+              height: 100.h,
               width: size.width,
               child: Container(
-                height: 100,
-                width: 100,
+                height: 100.h,
+                width: 100.w,
                 decoration: const BoxDecoration(
                     color: Colors.green, shape: BoxShape.circle),
                 child: CircleAvatar(
@@ -412,14 +414,14 @@ class _LoadingDataUser extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(
-      children: const [
-        ShimmerCustom(),
-        SizedBox(height: 10.0),
-        ShimmerCustom(),
-        SizedBox(height: 10.0),
-        ShimmerCustom(),
-        SizedBox(height: 10.0),
-        ShimmerCustom(),
+      children: [
+        const ShimmerCustom(),
+        SizedBox(height: 10.h),
+        const ShimmerCustom(),
+        SizedBox(height: 10.h),
+        const ShimmerCustom(),
+        SizedBox(height: 10.h),
+        const ShimmerCustom(),
       ],
     );
   }

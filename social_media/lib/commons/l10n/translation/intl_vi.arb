@@ -1,4 +1,10 @@
 {
-  "@@locale": "vi",
-  "language": "Tiếng Việt"
-}
+    "@@locale": "vi",
+    "language": "Tiếng Việt",
+
+    "@@settings_page": "Settings",
+    "settings_page_language": "Ngôn ngữ",
+    "settings_page_privacy": "Bảo mật"
+  }
+  
+  

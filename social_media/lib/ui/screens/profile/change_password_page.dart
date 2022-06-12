@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:form_field_validator/form_field_validator.dart';
 import 'package:social_media/domain/blocs/blocs.dart';
 import 'package:social_media/ui/helpers/helpers.dart';
@@ -67,7 +68,7 @@ class _ChangePasswordPageState extends State<ChangePasswordPage> {
           backgroundColor: Colors.white,
           appBar: AppBar(
             backgroundColor: Colors.white,
-            title: const TextCustom(text: 'Password', fontSize: 19),
+            title: TextCustom(text: 'Password', fontSize: 19.sp),
             elevation: 0,
             leading: IconButton(
               onPressed: () => Navigator.pop(context),
@@ -83,16 +84,17 @@ class _ChangePasswordPageState extends State<ChangePasswordPage> {
                           _newPasswordAgainController.text.trim()));
                     }
                   },
-                  child: const TextCustom(
-                      text: 'Save', fontSize: 15, color: CustomColors.primary))
+                  child: TextCustom(
+                      text: 'Save',
+                      fontSize: 15.sp,
+                      color: CustomColors.primary))
             ],
           ),
           body: Form(
             key: _keyForm,
             child: SafeArea(
                 child: Padding(
-              padding:
-                  const EdgeInsets.symmetric(horizontal: 20.0, vertical: 10.0),
+              padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 10.h),
               child: SingleChildScrollView(
                 child: Column(
                   children: [
@@ -106,7 +108,7 @@ class _ChangePasswordPageState extends State<ChangePasswordPage> {
                             errorText: 'This field cannot be empty')
                       ]),
                     ),
-                    const SizedBox(height: 20.0),
+                    SizedBox(height: 20.h),
                     TextFormProfile(
                       controller: _newPasswordController,
                       labelText: 'New Password',
@@ -117,7 +119,7 @@ class _ChangePasswordPageState extends State<ChangePasswordPage> {
                             errorText: 'El campo no puede estar vacio')
                       ]),
                     ),
-                    const SizedBox(height: 20.0),
+                    SizedBox(height: 20.h),
                     TextFormProfile(
                       controller: _newPasswordAgainController,
                       labelText: 'Repeat password',

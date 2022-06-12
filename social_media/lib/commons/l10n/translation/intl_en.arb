@@ -1,4 +1,8 @@
 {
   "@@locale": "en",
-  "language": "English"
+  "language": "English",
+  
+  "@@settings_page": "Settings",
+  "settings_page_language": "Language",
+  "settings_page_privacy": "Privacy"
 }

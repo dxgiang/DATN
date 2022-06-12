@@ -2,6 +2,7 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:social_media/commons/assets.dart';
 import 'package:social_media/domain/blocs/post/post_bloc.dart';
@@ -54,16 +55,16 @@ class _ListPhotosProfilePageState extends State<ListPhotosProfilePage> {
           builder: (context, snapshot) {
             return !snapshot.hasData
                 ? Column(
-                    children: const [
-                      ShimmerCustom(),
-                      SizedBox(height: 10.0),
-                      ShimmerCustom(),
-                      SizedBox(height: 10.0),
-                      ShimmerCustom(),
+                    children: [
+                      const ShimmerCustom(),
+                      SizedBox(height: 10.h),
+                      const ShimmerCustom(),
+                      SizedBox(height: 10.h),
+                      const ShimmerCustom(),
                     ],
                   )
                 : ListView.builder(
-                    padding: const EdgeInsets.symmetric(horizontal: 5.0),
+                    padding: EdgeInsets.symmetric(horizontal: 5.w),
                     physics: const BouncingScrollPhysics(),
                     itemCount: snapshot.data!.length,
                     itemBuilder: (context, i) {
@@ -71,20 +72,20 @@ class _ListPhotosProfilePageState extends State<ListPhotosProfilePage> {
                           snapshot.data![i].images.split(',');
 
                       return Padding(
-                        padding: const EdgeInsets.only(bottom: 15.0),
+                        padding: EdgeInsets.only(bottom: 15.h),
                         child: SizedBox(
-                          height: 350,
+                          height: 350.h,
                           width: size.width,
                           child: Stack(
                             children: [
                               ClipRRect(
-                                borderRadius: BorderRadius.circular(15.0),
+                                borderRadius: BorderRadius.circular(15.r),
                                 child: CarouselSlider.builder(
                                   itemCount: listImages.length,
                                   options: CarouselOptions(
                                     viewportFraction: 1.0,
                                     enableInfiniteScroll: false,
-                                    height: 350,
+                                    height: 350.h,
                                     scrollPhysics:
                                         const BouncingScrollPhysics(),
                                     autoPlay: false,
@@ -101,8 +102,7 @@ class _ListPhotosProfilePageState extends State<ListPhotosProfilePage> {
                                 ),
                               ),
                               Padding(
-                                padding:
-                                    const EdgeInsets.only(left: 10.0, top: 5.0),
+                                padding: EdgeInsets.only(left: 10.w, top: 5.h),
                                 child: Row(
                                   mainAxisAlignment:
                                       MainAxisAlignment.spaceBetween,
@@ -117,7 +117,7 @@ class _ListPhotosProfilePageState extends State<ListPhotosProfilePage> {
                                               Environment.baseUrl +
                                                   snapshot.data![i].avatar),
                                         ),
-                                        const SizedBox(width: 10.0),
+                                        SizedBox(width: 10.w),
                                         Column(
                                           crossAxisAlignment:
                                               CrossAxisAlignment.start,
@@ -127,19 +127,19 @@ class _ListPhotosProfilePageState extends State<ListPhotosProfilePage> {
                                                     snapshot.data![i].username,
                                                 color: Colors.white,
                                                 fontWeight: FontWeight.w500,
-                                                fontSize: 20),
+                                                fontSize: 20.sp),
                                             TextCustom(
                                                 text: timeago.format(
                                                     snapshot.data![i].createdAt,
                                                     locale: 'en'),
-                                                fontSize: 14,
+                                                fontSize: 14.sp,
                                                 color: Colors.white),
                                           ],
                                         )
                                       ],
                                     ),
                                     IconButton(
-                                        splashRadius: 20,
+                                        splashRadius: 20.r,
                                         onPressed: () {},
                                         icon: const Icon(
                                             Icons.more_vert_rounded,
@@ -148,20 +148,20 @@ class _ListPhotosProfilePageState extends State<ListPhotosProfilePage> {
                                 ),
                               ),
                               Positioned(
-                                  bottom: 25,
+                                  bottom: 25.h,
                                   child: Container(
-                                    padding: const EdgeInsets.symmetric(
-                                        horizontal: 15.0),
-                                    height: 45,
+                                    padding:
+                                        EdgeInsets.symmetric(horizontal: 15.w),
+                                    height: 45.h,
                                     width: size.width * .95,
                                     child: ClipRRect(
-                                      borderRadius: BorderRadius.circular(50.0),
+                                      borderRadius: BorderRadius.circular(50.r),
                                       child: BackdropFilter(
                                         filter: ImageFilter.blur(
                                             sigmaX: 5.0, sigmaY: 5.0),
                                         child: Container(
-                                          padding: const EdgeInsets.symmetric(
-                                              horizontal: 10.0),
+                                          padding: EdgeInsets.symmetric(
+                                              horizontal: 10.w),
                                           color: Colors.white.withOpacity(0.2),
                                           child: Row(
                                             mainAxisAlignment:
@@ -191,19 +191,18 @@ class _ListPhotosProfilePageState extends State<ListPhotosProfilePage> {
                                                                     .favorite_outline_rounded,
                                                                 color: Colors
                                                                     .white),
-                                                        const SizedBox(
-                                                            width: 8.0),
+                                                        SizedBox(width: 8.w),
                                                         TextCustom(
                                                             text: snapshot
                                                                 .data![i]
                                                                 .countLikes
                                                                 .toString(),
-                                                            fontSize: 16,
+                                                            fontSize: 16.sp,
                                                             color: Colors.white)
                                                       ],
                                                     ),
                                                   ),
-                                                  const SizedBox(width: 20.0),
+                                                  SizedBox(width: 20.w),
                                                   TextButton(
                                                     onPressed: () {
                                                       Navigator.push(
@@ -217,17 +216,17 @@ class _ListPhotosProfilePageState extends State<ListPhotosProfilePage> {
                                                     child: Row(
                                                       children: [
                                                         SvgPicture.asset(
-                                                            SocialMediaAssets.messageIcon,
+                                                            SocialMediaAssets
+                                                                .messageIcon,
                                                             color:
                                                                 Colors.white),
-                                                        const SizedBox(
-                                                            width: 5.0),
+                                                        SizedBox(width: 5.w),
                                                         TextCustom(
                                                             text: snapshot
                                                                 .data![i]
                                                                 .countComment
                                                                 .toString(),
-                                                            fontSize: 16,
+                                                            fontSize: 16.sp,
                                                             color: Colors.white)
                                                       ],
                                                     ),
@@ -239,8 +238,9 @@ class _ListPhotosProfilePageState extends State<ListPhotosProfilePage> {
                                                   IconButton(
                                                       onPressed: () {},
                                                       icon: SvgPicture.asset(
-                                                          SocialMediaAssets.sendIcon,
-                                                          height: 24,
+                                                          SocialMediaAssets
+                                                              .sendIcon,
+                                                          height: 24.h,
                                                           color: Colors.white)),
                                                   IconButton(
                                                       onPressed: () {},

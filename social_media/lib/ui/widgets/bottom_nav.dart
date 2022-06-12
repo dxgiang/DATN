@@ -11,7 +11,7 @@ class BottomNavigationCustom extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 55,
+      height: 55.h,
       decoration: BoxDecoration(
           color: isReel ? Colors.black : Colors.white,
           boxShadow: const [
@@ -70,13 +70,13 @@ class _ItemProfile extends StatelessWidget {
       child: BlocBuilder<UserBloc, UserState>(
           builder: (_, state) => state.user?.image != null
               ? CircleAvatar(
-                  radius: 15,
+                  radius: 15.r,
                   backgroundImage:
                       NetworkImage(Environment.baseUrl + state.user!.image))
-              : const CircleAvatar(
-                  radius: 15,
+              : CircleAvatar(
+                  radius: 15.r,
                   backgroundColor: CustomColors.primary,
-                  child: CircularProgressIndicator(
+                  child: const CircularProgressIndicator(
                       color: Colors.white, strokeWidth: 2))),
     );
   }
@@ -116,7 +116,7 @@ class _ItemButtom extends StatelessWidget {
                         : Colors.black87,
                 size: 28)
             : SvgPicture.asset(iconString!,
-                height: 25,
+                height: 25.h,
                 color: (i == index)
                     ? CustomColors.primary
                     : isReel

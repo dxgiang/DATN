@@ -1,36 +1,37 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:social_media/ui/helpers/modal_profile_settings.dart';
 
 modalMenuOtherProfile(BuildContext context, Size size) {
   showModalBottomSheet(
     context: context,
-    shape: const RoundedRectangleBorder(
+    shape: RoundedRectangleBorder(
         borderRadius:
-            BorderRadiusDirectional.vertical(top: Radius.circular(20.0))),
+            BorderRadiusDirectional.vertical(top: Radius.circular(20.0.r))),
     backgroundColor: Colors.white,
     builder: (context) => Container(
       height: size.height * .48,
       width: size.width,
-      decoration: const BoxDecoration(
+      decoration: BoxDecoration(
           color: Colors.white,
           borderRadius:
-              BorderRadiusDirectional.vertical(top: Radius.circular(20.0))),
+              BorderRadiusDirectional.vertical(top: Radius.circular(20.r))),
       child: Padding(
-        padding: const EdgeInsets.symmetric(vertical: 20.0, horizontal: 10.0),
+        padding: EdgeInsets.symmetric(vertical: 20.h, horizontal: 10.w),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Align(
               alignment: Alignment.center,
               child: Container(
-                height: 5,
-                width: 50,
+                height: 5.h,
+                width: 50.w,
                 decoration: BoxDecoration(
                     color: Colors.grey,
-                    borderRadius: BorderRadius.circular(50.0)),
+                    borderRadius: BorderRadius.circular(50.r)),
               ),
             ),
-            const SizedBox(height: 10.0),
+            SizedBox(height: 10.h),
             Item(
               icon: Icons.report,
               text: 'Report...',

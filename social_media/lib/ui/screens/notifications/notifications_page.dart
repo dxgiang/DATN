@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:social_media/domain/blocs/blocs.dart';
 import 'package:social_media/domain/models/response/response_notifications.dart';
 import 'package:social_media/domain/services/notifications_services.dart';
@@ -38,14 +39,14 @@ class _NotificationsPageState extends State<NotificationsPage> {
         backgroundColor: Colors.white,
         appBar: AppBar(
           backgroundColor: Colors.white,
-          title: const TextCustom(
+          title: TextCustom(
               text: 'Activities',
               fontWeight: FontWeight.w500,
               letterSpacing: .9,
-              fontSize: 19),
+              fontSize: 19.sp),
           elevation: 0,
           leading: IconButton(
-              splashRadius: 20,
+              splashRadius: 20.r,
               onPressed: () => Navigator.pushAndRemoveUntil(
                   context, routeSlide(page: const HomePage()), (_) => false),
               icon: const Icon(Icons.arrow_back_ios_new_rounded,
@@ -57,21 +58,21 @@ class _NotificationsPageState extends State<NotificationsPage> {
           builder: (context, snapshot) {
             return !snapshot.hasData
                 ? Column(
-                    children: const [
-                      ShimmerCustom(),
-                      SizedBox(height: 10.0),
-                      ShimmerCustom(),
-                      SizedBox(height: 10.0),
-                      ShimmerCustom(),
+                    children: [
+                      const ShimmerCustom(),
+                      SizedBox(height: 10.h),
+                      const ShimmerCustom(),
+                      SizedBox(height: 10.h),
+                      const ShimmerCustom(),
                     ],
                   )
                 : ListView.builder(
                     physics: const BouncingScrollPhysics(),
-                    padding: const EdgeInsets.symmetric(horizontal: 10.0),
+                    padding: EdgeInsets.symmetric(horizontal: 10.w),
                     itemCount: snapshot.data!.length,
                     itemBuilder: (context, i) {
                       return SizedBox(
-                        height: 60,
+                        height: 60.h,
                         width: MediaQuery.of(context).size.width,
                         child: Row(
                           crossAxisAlignment: CrossAxisAlignment.start,
@@ -81,13 +82,13 @@ class _NotificationsPageState extends State<NotificationsPage> {
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 CircleAvatar(
-                                  radius: 22,
+                                  radius: 22.r,
                                   backgroundColor: Colors.blue,
                                   backgroundImage: NetworkImage(
                                       Environment.baseUrl +
                                           snapshot.data![i].avatar),
                                 ),
-                                const SizedBox(width: 5.0),
+                                SizedBox(width: 5.w),
                                 Row(
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
@@ -98,37 +99,37 @@ class _NotificationsPageState extends State<NotificationsPage> {
                                         TextCustom(
                                             text: snapshot.data![i].follower,
                                             fontWeight: FontWeight.w500,
-                                            fontSize: 16),
+                                            fontSize: 16.sp),
                                         TextCustom(
                                             text: timeago.format(
                                                 snapshot.data![i].createdAt,
                                                 locale: 'en_short'),
-                                            fontSize: 14,
+                                            fontSize: 14.sp,
                                             color: Colors.grey),
                                       ],
                                     ),
-                                    const SizedBox(width: 5.0),
+                                    SizedBox(width: 5.w),
                                     if (snapshot.data![i].typeNotification ==
                                         '1')
-                                      const TextCustom(
+                                      TextCustom(
                                           text: 'Send a friend request ',
-                                          fontSize: 16),
+                                          fontSize: 16.sp),
                                     if (snapshot.data![i].typeNotification ==
                                         '3')
-                                      const TextCustom(
+                                      TextCustom(
                                           text: 'Start to following',
-                                          fontSize: 16),
+                                          fontSize: 16.sp),
                                     if (snapshot.data![i].typeNotification ==
                                         '2')
                                       Row(
-                                        children: const [
+                                        children: [
                                           TextCustom(
                                               text: 'liked ',
-                                              fontSize: 16,
+                                              fontSize: 16.sp,
                                               fontWeight: FontWeight.w500),
                                           TextCustom(
                                               text: 'to your post',
-                                              fontSize: 16),
+                                              fontSize: 16.sp),
                                         ],
                                       ),
                                   ],
@@ -139,22 +140,22 @@ class _NotificationsPageState extends State<NotificationsPage> {
                               Card(
                                 color: CustomColors.primary,
                                 shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(50.0)),
+                                    borderRadius: BorderRadius.circular(50.r)),
                                 elevation: 0,
                                 child: InkWell(
-                                    borderRadius: BorderRadius.circular(50.0),
+                                    borderRadius: BorderRadius.circular(50.r),
                                     splashColor: Colors.white54,
                                     onTap: () {
                                       userBloc.add(OnAcceptFollowerRequestEvent(
                                           snapshot.data![i].followersUid,
                                           snapshot.data![i].uidNotification));
                                     },
-                                    child: const Padding(
+                                    child: Padding(
                                       padding: EdgeInsets.symmetric(
-                                          horizontal: 10.0, vertical: 5.0),
+                                          horizontal: 10.w, vertical: 5.h),
                                       child: TextCustom(
                                           text: 'Aceptar',
-                                          fontSize: 16,
+                                          fontSize: 16.sp,
                                           color: Colors.white),
                                     )),
                               ),

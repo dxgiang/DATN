@@ -2,6 +2,7 @@ import 'dart:io';
 import 'dart:typed_data';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:photo_manager/photo_manager.dart';
 import 'package:social_media/domain/blocs/blocs.dart';
 import 'package:social_media/ui/helpers/helpers.dart';
@@ -73,13 +74,13 @@ class _AddStoryPageState extends State<AddStoryPage> {
         appBar: AppBar(
           backgroundColor: Colors.white,
           elevation: 0,
-          title: const TextCustom(
+          title: TextCustom(
             text: 'Gallery',
-            fontSize: 19,
+            fontSize: 19.sp,
             letterSpacing: .8,
           ),
           leading: IconButton(
-              splashRadius: 20,
+              splashRadius: 20.r,
               onPressed: () => Navigator.pop(context),
               icon: const Icon(Icons.close, color: Colors.black87)),
           actions: [
@@ -90,9 +91,9 @@ class _AddStoryPageState extends State<AddStoryPage> {
                       storyBloc.add(OnAddNewStoryEvent(state.image!.path));
                     }
                   },
-                  child: const TextCustom(
+                  child: TextCustom(
                       text: 'Done',
-                      fontSize: 17,
+                      fontSize: 17.sp,
                       color: CustomColors.primary)),
             )
           ],
@@ -141,8 +142,8 @@ class _AddStoryPageState extends State<AddStoryPage> {
                           if (snapshot.connectionState ==
                               ConnectionState.done) {
                             return Container(
-                              height: 85,
-                              width: 100,
+                              height: 85.h,
+                              width: 100.w,
                               decoration: BoxDecoration(
                                   image: DecorationImage(
                                       fit: BoxFit.cover,

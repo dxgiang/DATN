@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:social_media/domain/blocs/blocs.dart';
 import 'package:social_media/ui/widgets/widgets.dart';
 import 'package:timeago/timeago.dart' as timeago;
@@ -42,24 +43,23 @@ class ChatMessage extends StatelessWidget {
     return Align(
       alignment: Alignment.centerRight,
       child: Container(
-        margin: const EdgeInsets.only(left: 50.0),
+        margin: EdgeInsets.only(left: 50.w),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.end,
           children: [
             TextCustom(
                 text:
                     timeago.format(time ?? DateTime.now(), locale: 'en_short'),
-                fontSize: 15,
+                fontSize: 15.sp,
                 color: Colors.grey),
             Container(
-              padding:
-                  const EdgeInsets.symmetric(horizontal: 10.0, vertical: 7.0),
-              margin: const EdgeInsets.only(left: 5.0, right: 5.0, bottom: 5.0),
-              child:
-                  TextCustom(text: message, color: Colors.white, fontSize: 17),
+              padding: EdgeInsets.symmetric(horizontal: 10.h, vertical: 7.h),
+              margin: EdgeInsets.only(left: 5.w, right: 5.w, bottom: 5.h),
+              child: TextCustom(
+                  text: message, color: Colors.white, fontSize: 17.sp),
               decoration: BoxDecoration(
                   color: CustomColors.primary,
-                  borderRadius: BorderRadius.circular(10.0)),
+                  borderRadius: BorderRadius.circular(10.r)),
             ),
           ],
         ),
@@ -71,22 +71,21 @@ class ChatMessage extends StatelessWidget {
     return Align(
       alignment: Alignment.centerLeft,
       child: Container(
-        margin: const EdgeInsets.only(right: 50.0),
+        margin: EdgeInsets.only(right: 50.w),
         child: Row(
           children: [
             Container(
-              padding:
-                  const EdgeInsets.symmetric(horizontal: 10.0, vertical: 7.0),
-              margin: const EdgeInsets.only(left: 5.0, right: 5.0, bottom: 5.0),
-              child: TextCustom(text: message, fontSize: 17),
+              padding: EdgeInsets.symmetric(horizontal: 10.w, vertical: 7.h),
+              margin: EdgeInsets.only(left: 5.w, right: 5.w, bottom: 5.h),
+              child: TextCustom(text: message, fontSize: 17.sp),
               decoration: BoxDecoration(
                   color: Colors.grey[300],
-                  borderRadius: BorderRadius.circular(10.0)),
+                  borderRadius: BorderRadius.circular(10.r)),
             ),
             TextCustom(
                 text:
                     timeago.format(time ?? DateTime.now(), locale: 'en_short'),
-                fontSize: 15,
+                fontSize: 15.sp,
                 color: Colors.grey)
           ],
         ),

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:social_media/data/env/env.dart';
 import 'package:social_media/domain/blocs/blocs.dart';
 import 'package:social_media/domain/models/response/response_followers.dart';
@@ -34,8 +35,8 @@ class _FollowersPageState extends State<FollowersPage> {
         backgroundColor: Colors.white,
         appBar: AppBar(
           backgroundColor: Colors.white,
-          title: const TextCustom(
-              text: 'Followers', letterSpacing: .8, fontSize: 19),
+          title:
+              TextCustom(text: 'Followers', letterSpacing: .8, fontSize: 19.sp),
           elevation: 0,
           leading: IconButton(
               splashRadius: 20,
@@ -78,20 +79,20 @@ class _ListFollowers extends StatelessWidget {
     final userBloc = BlocProvider.of<UserBloc>(context);
 
     return ListView.builder(
-        padding: const EdgeInsets.symmetric(horizontal: 10.0),
+        padding: EdgeInsets.symmetric(horizontal: 10.w),
         itemCount: follow.length,
         itemBuilder: (context, i) {
           return InkWell(
-            borderRadius: BorderRadius.circular(10.0),
+            borderRadius: BorderRadius.circular(10.r),
             splashColor: Colors.grey[300],
             onTap: () => Navigator.push(
                 context,
                 routeSlide(
                     page: ProfileAnotherUserPage(idUser: follow[i].uidUser))),
             child: Container(
-              padding: const EdgeInsets.symmetric(horizontal: 5.0),
+              padding: EdgeInsets.symmetric(horizontal: 5.w),
               decoration:
-                  BoxDecoration(borderRadius: BorderRadius.circular(10.0)),
+                  BoxDecoration(borderRadius: BorderRadius.circular(10.r)),
               height: 70,
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -99,21 +100,21 @@ class _ListFollowers extends StatelessWidget {
                   Row(
                     children: [
                       CircleAvatar(
-                        radius: 25,
+                        radius: 25.r,
                         backgroundColor: Colors.amber,
                         backgroundImage: NetworkImage(
                             Environment.baseUrl + follow[i].avatar),
                       ),
-                      const SizedBox(width: 10.0),
+                      SizedBox(width: 10.w),
                       Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          TextCustom(text: follow[i].username, fontSize: 16),
+                          TextCustom(text: follow[i].username, fontSize: 16.sp),
                           TextCustom(
                               text: follow[i].fullname,
                               color: Colors.grey,
-                              fontSize: 15)
+                              fontSize: 15.sp)
                         ],
                       ),
                     ],
@@ -121,17 +122,17 @@ class _ListFollowers extends StatelessWidget {
                   Card(
                     shape: RoundedRectangleBorder(
                         side: BorderSide(color: Colors.grey[300]!),
-                        borderRadius: BorderRadius.circular(50.0)),
+                        borderRadius: BorderRadius.circular(50.r)),
                     elevation: 0,
                     child: InkWell(
-                        borderRadius: BorderRadius.circular(50.0),
+                        borderRadius: BorderRadius.circular(50.r),
                         splashColor: Colors.blue[50],
                         onTap: () => userBloc
                             .add(OnDeletefollowersEvent(follow[i].uidUser)),
-                        child: const Padding(
+                        child: Padding(
                           padding: EdgeInsets.symmetric(
-                              horizontal: 17.0, vertical: 6.0),
-                          child: TextCustom(text: 'Remove', fontSize: 16),
+                              horizontal: 17.w, vertical: 6.h),
+                          child: TextCustom(text: 'Remove', fontSize: 16.sp),
                         )),
                   ),
                 ],

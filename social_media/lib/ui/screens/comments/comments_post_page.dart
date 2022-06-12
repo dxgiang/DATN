@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:social_media/domain/blocs/post/post_bloc.dart';
 import 'package:social_media/domain/models/response/response_comments.dart';
@@ -60,15 +61,15 @@ class _CommentsPostPageState extends State<CommentsPostPage> {
         backgroundColor: Colors.white,
         appBar: AppBar(
           backgroundColor: Colors.white,
-          title: const TextCustom(
+          title: TextCustom(
               text: 'Comments',
-              fontSize: 20,
+              fontSize: 20.sp,
               fontWeight: FontWeight.w500,
               letterSpacing: .8),
           centerTitle: true,
           elevation: 0,
           leading: IconButton(
-              splashRadius: 20,
+              splashRadius: 20.r,
               onPressed: () => Navigator.pop(context),
               icon: const Icon(Icons.arrow_back_ios_new_rounded,
                   color: Colors.black87)),
@@ -83,24 +84,24 @@ class _CommentsPostPageState extends State<CommentsPostPage> {
                     children: [
                       Expanded(
                         child: ListView.builder(
-                          padding: const EdgeInsets.symmetric(horizontal: 15.0),
+                          padding: EdgeInsets.symmetric(horizontal: 15.w),
                           itemCount: snapshot.data!.length,
                           itemBuilder: (context, i) => Padding(
-                            padding: const EdgeInsets.only(bottom: 8.0),
+                            padding: EdgeInsets.only(bottom: 8.h),
                             child: Container(
-                              padding: const EdgeInsets.only(
-                                  top: 5.0, right: 5.0, bottom: 5.0),
+                              padding: EdgeInsets.only(
+                                  top: 5.h, right: 5.w, bottom: 5.h),
                               // color: Colors.green,
                               child: Row(
                                 children: [
                                   CircleAvatar(
-                                    radius: 25,
+                                    radius: 25.r,
                                     backgroundColor: Colors.blue,
                                     backgroundImage: NetworkImage(
                                         Environment.baseUrl +
                                             snapshot.data![i].avatar),
                                   ),
-                                  const SizedBox(width: 10.0),
+                                  SizedBox(width: 10.w),
                                   Flexible(
                                     flex: 2,
                                     child: Column(
@@ -110,36 +111,35 @@ class _CommentsPostPageState extends State<CommentsPostPage> {
                                       children: [
                                         TextCustom(
                                             text: snapshot.data![i].username,
-                                            fontSize: 16,
+                                            fontSize: 16.sp,
                                             fontWeight: FontWeight.w500),
                                         Text(snapshot.data![i].comment),
-                                        const SizedBox(height: 5.0),
+                                        SizedBox(height: 5.h),
                                         Row(
                                           mainAxisAlignment:
                                               MainAxisAlignment.spaceBetween,
                                           children: [
                                             InkWell(
                                               borderRadius:
-                                                  BorderRadius.circular(50),
+                                                  BorderRadius.circular(50.r),
                                               onTap: () => postBloc.add(
                                                   OnLikeOrUnlikeComment(
                                                       snapshot.data![i].uid)),
                                               child: snapshot.data![i].isLike ==
                                                       1
-                                                  ? const Icon(
-                                                      Icons.favorite_rounded,
-                                                      size: 19,
+                                                  ? Icon(Icons.favorite_rounded,
+                                                      size: 19.sp,
                                                       color: Colors.red)
-                                                  : const Icon(
+                                                  : Icon(
                                                       Icons
                                                           .favorite_border_rounded,
-                                                      size: 19),
+                                                      size: 19.sp),
                                             ),
                                             TextCustom(
                                                 text: timeago.format(
                                                     snapshot.data![i].createdAt,
                                                     locale: 'en_short'),
-                                                fontSize: 14),
+                                                fontSize: 14.sp),
                                           ],
                                         )
                                         // add dots to show this is a longer text
@@ -153,22 +153,22 @@ class _CommentsPostPageState extends State<CommentsPostPage> {
                         ),
                       ),
                       Container(
-                        height: 70,
-                        decoration: const BoxDecoration(
-                            color: Color(0xff1F2128),
+                        height: 70.h,
+                        decoration: BoxDecoration(
+                            color: const Color(0xff1F2128),
                             borderRadius: BorderRadius.vertical(
-                                top: Radius.circular(18.0))),
+                                top: Radius.circular(18.r))),
                         child: Padding(
-                          padding: const EdgeInsets.symmetric(horizontal: 15.0),
+                          padding: EdgeInsets.symmetric(horizontal: 15.w),
                           child: Row(
                             children: [
                               Expanded(
                                 child: Container(
-                                  height: 50,
+                                  height: 50.h,
                                   decoration: BoxDecoration(
                                       color: Colors.white10,
                                       borderRadius:
-                                          BorderRadius.circular(10.0)),
+                                          BorderRadius.circular(10.r)),
                                   child: TextField(
                                     controller: _commentController,
                                     style:
@@ -176,7 +176,7 @@ class _CommentsPostPageState extends State<CommentsPostPage> {
                                     decoration: InputDecoration(
                                         border: InputBorder.none,
                                         contentPadding:
-                                            const EdgeInsets.only(left: 10.0),
+                                            EdgeInsets.only(left: 10.w),
                                         hintText: 'Write a comment',
                                         hintStyle: GoogleFonts.roboto(
                                             color: Colors.white)),
@@ -191,8 +191,8 @@ class _CommentsPostPageState extends State<CommentsPostPage> {
                                           _commentController.text.trim()));
                                     }
                                   },
-                                  icon: const Icon(Icons.send_rounded,
-                                      color: Colors.white, size: 28))
+                                  icon: Icon(Icons.send_rounded,
+                                      color: Colors.white, size: 28.sp))
                             ],
                           ),
                         ),

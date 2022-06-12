@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:social_media/commons/assets.dart';
 import 'package:social_media/domain/blocs/blocs.dart';
 import 'package:social_media/ui/helpers/helpers.dart';
@@ -76,8 +77,8 @@ class _CheckingLoginPageState extends State<CheckingLoginPage>
                     ])),
             child: Center(
               child: SizedBox(
-                height: 200,
-                width: 150,
+                height: 200.h,
+                width: 150.w,
                 child: Column(
                   children: [
                     AnimatedBuilder(
@@ -85,7 +86,7 @@ class _CheckingLoginPageState extends State<CheckingLoginPage>
                         builder: (_, child) => Transform.scale(
                             scale: _scaleAnimation.value,
                             child: Image.asset(SocialMediaAssets.logoWhite))),
-                    const SizedBox(height: 10.0),
+                    SizedBox(height: 10.h),
                     const TextCustom(text: 'Checking...', color: Colors.white)
                   ],
                 ),

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:social_media/commons/assets.dart';
 import 'package:social_media/ui/themes/color_custom.dart';
@@ -44,37 +45,37 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
       ),
       body: SafeArea(
         child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 20.0, vertical: 10.0),
+          padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 10.h),
           child: SingleChildScrollView(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                const TextCustom(
+                TextCustom(
                     text: 'Get your account back!',
                     letterSpacing: 1.5,
                     fontWeight: FontWeight.w500,
-                    fontSize: 25,
+                    fontSize: 25.sp,
                     color: CustomColors.secundary),
-                const SizedBox(height: 10.0),
-                const TextCustom(
+                SizedBox(height: 10.h),
+                TextCustom(
                   text: 'Enter your email to recover your account.',
-                  fontSize: 17,
+                  fontSize: 17.sp,
                   letterSpacing: 1.0,
                   maxLines: 2,
                 ),
                 SizedBox(
-                  height: 300,
+                  height: 300.h,
                   width: size.width,
                   child:
                       SvgPicture.asset(SocialMediaAssets.undrawForgotPassword),
                 ),
-                const SizedBox(height: 10.0),
+                SizedBox(height: 10.h),
                 TextFieldCustom(
                   controller: emailController,
                   hintText: 'Email',
                   keyboardType: TextInputType.emailAddress,
                 ),
-                const SizedBox(height: 40.0),
+                SizedBox(height: 40.h),
                 BtnCustom(
                   text: 'Find your account',
                   width: size.width,

@@ -15,7 +15,7 @@ class ItemModal extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: 45,
+      height: 45.h,
       width: double.infinity,
       child: TextButton(
         onPressed: onPressed,
@@ -25,8 +25,8 @@ class ItemModal extends StatelessWidget {
             child: Row(
               children: [
                 Icon(icon, color: Colors.black87),
-                const SizedBox(width: 10.0),
-                TextCustom(text: text, fontSize: 17)
+                SizedBox(width: 10.sp),
+                TextCustom(text: text, fontSize: 17.sp)
               ],
             )),
       ),

@@ -2,6 +2,7 @@ import 'dart:io';
 import 'dart:typed_data';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:form_field_validator/form_field_validator.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -18,7 +19,7 @@ import 'package:social_media/ui/themes/color_custom.dart';
 import 'package:social_media/ui/widgets/widgets.dart';
 
 class AddPostPage extends StatefulWidget {
-  const AddPostPage({Key? key}) : super(key: key);
+  AddPostPage({Key? key}) : super(key: key);
 
   @override
   State<AddPostPage> createState() => _AddPostPageState();
@@ -87,7 +88,7 @@ class _AddPostPageState extends State<AddPostPage> {
             child: Column(
               children: [
                 _appBarPost(),
-                const SizedBox(height: 10.0),
+                SizedBox(height: 10.h),
                 Expanded(
                   flex: 2,
                   child: SizedBox(
@@ -100,10 +101,10 @@ class _AddPostPageState extends State<AddPostPage> {
                               children: [
                                 Container(
                                   alignment: Alignment.topLeft,
-                                  height: 120,
+                                  height: 120.h,
                                   width: size.width * .125,
                                   child: CircleAvatar(
-                                    radius: 30,
+                                    radius: 30.r,
                                     backgroundImage: NetworkImage(
                                         Environment.baseUrl +
                                             userBloc.user!.image),
@@ -112,29 +113,28 @@ class _AddPostPageState extends State<AddPostPage> {
                               ],
                             ),
                             Container(
-                              height: 100,
+                              height: 100.h,
                               width: size.width * .78,
                               color: Colors.white,
                               child: TextFormField(
                                 controller: _descriptionController,
                                 maxLines: 4,
                                 decoration: InputDecoration(
-                                    contentPadding: const EdgeInsets.only(
-                                        left: 10.0, top: 10.0),
+                                    contentPadding:
+                                        EdgeInsets.only(left: 10.w, top: 10.h),
                                     border: InputBorder.none,
                                     hintText: 'Add a comment',
                                     hintStyle:
-                                        GoogleFonts.roboto(fontSize: 18)),
+                                        GoogleFonts.roboto(fontSize: 18.sp)),
                                 validator: RequiredValidator(
                                     errorText: 'This field is required'),
                               ),
                             ),
                           ],
                         ),
-                        const SizedBox(height: 10.0),
+                        SizedBox(height: 10.h),
                         Padding(
-                          padding:
-                              const EdgeInsets.only(left: 65.0, right: 10.0),
+                          padding: EdgeInsets.only(left: 65.w, right: 10.w),
                           child: BlocBuilder<PostBloc, PostState>(
                               buildWhen: (previous, current) =>
                                   previous != current,
@@ -149,14 +149,14 @@ class _AddPostPageState extends State<AddPostPage> {
                                       itemBuilder: (_, i) => Stack(
                                         children: [
                                           Container(
-                                            height: 150,
+                                            height: 150.h,
                                             width: size.width * .95,
-                                            margin: const EdgeInsets.only(
-                                                bottom: 10.0),
+                                            margin:
+                                                EdgeInsets.only(bottom: 10.h),
                                             decoration: BoxDecoration(
                                                 color: Colors.blue,
                                                 borderRadius:
-                                                    BorderRadius.circular(10.0),
+                                                    BorderRadius.circular(10.r),
                                                 image: DecorationImage(
                                                     fit: BoxFit.cover,
                                                     image: FileImage(state
@@ -164,8 +164,8 @@ class _AddPostPageState extends State<AddPostPage> {
                                                         i]))),
                                           ),
                                           Positioned(
-                                            top: 5,
-                                            right: 5,
+                                            top: 5.h,
+                                            right: 5.w,
                                             child: InkWell(
                                               onTap: () => postBloc.add(
                                                   OnClearSelectedImageEvent(i)),
@@ -185,10 +185,10 @@ class _AddPostPageState extends State<AddPostPage> {
                     ),
                   ),
                 ),
-                const SizedBox(height: 5.0),
+                SizedBox(height: 5.h),
                 Container(
                   padding: const EdgeInsets.all(5),
-                  height: 90,
+                  height: 90.h,
                   width: size.width,
                   // color: Colors.amber,
                   child: ListView.builder(
@@ -207,11 +207,11 @@ class _AddPostPageState extends State<AddPostPage> {
                             if (snapshot.connectionState ==
                                 ConnectionState.done) {
                               return Container(
-                                height: 85,
-                                width: 100,
-                                margin: const EdgeInsets.only(right: 5.0),
+                                height: 85.h,
+                                width: 100.w,
+                                margin: EdgeInsets.only(right: 5.w),
                                 decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(10.0),
+                                    borderRadius: BorderRadius.circular(10.r),
                                     image: DecorationImage(
                                         fit: BoxFit.cover,
                                         image: MemoryImage(snapshot.data!))),
@@ -224,12 +224,12 @@ class _AddPostPageState extends State<AddPostPage> {
                     },
                   ),
                 ),
-                const SizedBox(height: 5.0),
+                SizedBox(height: 5.h),
                 const Divider(),
                 InkWell(
                   onTap: () => modalPrivacyPost(context),
                   child: Padding(
-                    padding: const EdgeInsets.symmetric(vertical: 5.0),
+                    padding: EdgeInsets.symmetric(vertical: 5.h),
                     child: Row(
                       children: [
                         BlocBuilder<PostBloc, PostState>(builder: (_, state) {
@@ -244,19 +244,18 @@ class _AddPostPageState extends State<AddPostPage> {
                           }
                           return const SizedBox();
                         }),
-                        const SizedBox(width: 5.0),
+                        SizedBox(width: 5.w),
                         BlocBuilder<PostBloc, PostState>(builder: (_, state) {
                           if (state.privacyPost == 1) {
-                            return const TextCustom(
-                                text: 'Anyone can comment', fontSize: 16);
+                            return TextCustom(
+                                text: 'Anyone can comment', fontSize: 16.sp);
                           }
                           if (state.privacyPost == 2) {
-                            return const TextCustom(
-                                text: 'Only followers', fontSize: 16);
+                            return TextCustom(
+                                text: 'Only followers', fontSize: 16.sp);
                           }
                           if (state.privacyPost == 3) {
-                            return const TextCustom(
-                                text: 'No one', fontSize: 16);
+                            return TextCustom(text: 'No one', fontSize: 16.sp);
                           }
                           return const SizedBox();
                         }),
@@ -265,14 +264,14 @@ class _AddPostPageState extends State<AddPostPage> {
                   ),
                 ),
                 const Divider(),
-                const SizedBox(height: 5.0),
+                SizedBox(height: 5.h),
                 SizedBox(
-                  height: 40,
+                  height: 40.h,
                   width: size.width,
                   child: Row(
                     children: [
                       IconButton(
-                          splashRadius: 20,
+                          splashRadius: 20.r,
                           onPressed: () async {
                             AppPermission()
                                 .permissionAccessGalleryMultiplesImagesNewPost(
@@ -281,7 +280,7 @@ class _AddPostPageState extends State<AddPostPage> {
                           },
                           icon: SvgPicture.asset(SocialMediaAssets.gallery)),
                       IconButton(
-                          splashRadius: 20,
+                          splashRadius: 20.r,
                           onPressed: () async {
                             AppPermission()
                                 .permissionAccessGalleryOrCameraForNewPost(
@@ -291,11 +290,11 @@ class _AddPostPageState extends State<AddPostPage> {
                           },
                           icon: SvgPicture.asset(SocialMediaAssets.camera)),
                       IconButton(
-                          splashRadius: 20,
+                          splashRadius: 20.r,
                           onPressed: () {},
                           icon: SvgPicture.asset(SocialMediaAssets.gif)),
                       IconButton(
-                          splashRadius: 20,
+                          splashRadius: 20.r,
                           onPressed: () {},
                           icon: SvgPicture.asset(SocialMediaAssets.location)),
                     ],
@@ -315,7 +314,7 @@ class _AddPostPageState extends State<AddPostPage> {
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
         IconButton(
-            splashRadius: 20,
+            splashRadius: 20.r,
             onPressed: () => Navigator.pushAndRemoveUntil(
                 context, routeSlide(page: const HomePage()), (_) => false),
             icon: const Icon(Icons.close_rounded)),
@@ -323,11 +322,11 @@ class _AddPostPageState extends State<AddPostPage> {
           buildWhen: (previous, current) => previous != current,
           builder: (context, state) => TextButton(
               style: TextButton.styleFrom(
-                  padding: const EdgeInsets.only(left: 12.0, right: 12.0),
+                  padding: EdgeInsets.only(left: 12.w, right: 12.w),
                   backgroundColor: CustomColors.primary,
                   primary: Colors.white,
                   shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(50.0))),
+                      borderRadius: BorderRadius.circular(50.r))),
               onPressed: () {
                 if (_keyForm.currentState!.validate()) {
                   if (state.imageFileSelected != null) {
@@ -338,10 +337,10 @@ class _AddPostPageState extends State<AddPostPage> {
                   }
                 }
               },
-              child: const TextCustom(
+              child: TextCustom(
                 text: 'Post',
                 color: Colors.white,
-                fontSize: 16,
+                fontSize: 16.sp,
                 fontWeight: FontWeight.w500,
                 letterSpacing: .7,
               )),
