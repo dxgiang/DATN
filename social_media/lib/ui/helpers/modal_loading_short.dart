@@ -13,7 +13,7 @@ void modalLoadingShort(BuildContext context) {
       content: SizedBox(
         height: 40.h,
         width: 40.w,
-        child: const CircularProgressIndicator(color: CustomColors.primary),
+        child: const CircularProgressIndicator(color: CustomColors.kPrimary),
       ),
     ),
   );

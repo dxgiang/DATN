@@ -35,137 +35,142 @@ class _NotificationsPageState extends State<NotificationsPage> {
           setState(() {});
         }
       },
-      child: Scaffold(
-        backgroundColor: Colors.white,
-        appBar: AppBar(
+      child: WillPopScope(
+        onWillPop: () async {
+          return false;
+        },
+        child: Scaffold(
           backgroundColor: Colors.white,
-          title: TextCustom(
-              text: 'Activities',
-              fontWeight: FontWeight.w500,
-              letterSpacing: .9,
-              fontSize: 19.sp),
-          elevation: 0,
-          leading: IconButton(
-              splashRadius: 20.r,
-              onPressed: () => Navigator.pushAndRemoveUntil(
-                  context, routeSlide(page: const HomePage()), (_) => false),
-              icon: const Icon(Icons.arrow_back_ios_new_rounded,
-                  color: Colors.black)),
-        ),
-        body: SafeArea(
-            child: FutureBuilder<List<Notificationsdb>>(
-          future: notificationServices.getNotificationsByUser(),
-          builder: (context, snapshot) {
-            return !snapshot.hasData
-                ? Column(
-                    children: [
-                      const ShimmerCustom(),
-                      SizedBox(height: 10.h),
-                      const ShimmerCustom(),
-                      SizedBox(height: 10.h),
-                      const ShimmerCustom(),
-                    ],
-                  )
-                : ListView.builder(
-                    physics: const BouncingScrollPhysics(),
-                    padding: EdgeInsets.symmetric(horizontal: 10.w),
-                    itemCount: snapshot.data!.length,
-                    itemBuilder: (context, i) {
-                      return SizedBox(
-                        height: 60.h,
-                        width: MediaQuery.of(context).size.width,
-                        child: Row(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Row(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                CircleAvatar(
-                                  radius: 22.r,
-                                  backgroundColor: Colors.blue,
-                                  backgroundImage: NetworkImage(
-                                      Environment.baseUrl +
-                                          snapshot.data![i].avatar),
-                                ),
-                                SizedBox(width: 5.w),
-                                Row(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    Column(
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.start,
-                                      children: [
-                                        TextCustom(
-                                            text: snapshot.data![i].follower,
-                                            fontWeight: FontWeight.w500,
-                                            fontSize: 16.sp),
-                                        TextCustom(
-                                            text: timeago.format(
-                                                snapshot.data![i].createdAt,
-                                                locale: 'en_short'),
-                                            fontSize: 14.sp,
-                                            color: Colors.grey),
-                                      ],
-                                    ),
-                                    SizedBox(width: 5.w),
-                                    if (snapshot.data![i].typeNotification ==
-                                        '1')
-                                      TextCustom(
-                                          text: 'Send a friend request ',
-                                          fontSize: 16.sp),
-                                    if (snapshot.data![i].typeNotification ==
-                                        '3')
-                                      TextCustom(
-                                          text: 'Start to following',
-                                          fontSize: 16.sp),
-                                    if (snapshot.data![i].typeNotification ==
-                                        '2')
-                                      Row(
+          appBar: AppBar(
+            backgroundColor: Colors.white,
+            title: TextCustom(
+                text: 'Notifications',
+                fontWeight: FontWeight.w500,
+                letterSpacing: .9,
+                fontSize: 19.sp),
+            elevation: 0,
+            leading: IconButton(
+                splashRadius: 20.r,
+                onPressed: () => Navigator.pushAndRemoveUntil(
+                    context, routeSlide(page: const HomePage()), (_) => false),
+                icon: const Icon(Icons.arrow_back_ios_new_rounded,
+                    color: Colors.black)),
+          ),
+          body: SafeArea(
+              child: FutureBuilder<List<Notificationsdb>>(
+            future: notificationServices.getNotificationsByUser(),
+            builder: (context, snapshot) {
+              return !snapshot.hasData
+                  ? Column(
+                      children: [
+                        const ShimmerCustom(),
+                        SizedBox(height: 10.h),
+                        const ShimmerCustom(),
+                        SizedBox(height: 10.h),
+                        const ShimmerCustom(),
+                      ],
+                    )
+                  : ListView.builder(
+                      physics: const BouncingScrollPhysics(),
+                      padding: EdgeInsets.symmetric(horizontal: 10.w),
+                      itemCount: snapshot.data!.length,
+                      itemBuilder: (context, i) {
+                        return SizedBox(
+                          height: 60.h,
+                          width: MediaQuery.of(context).size.width,
+                          child: Row(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Row(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  CircleAvatar(
+                                    radius: 22.r,
+                                    backgroundColor: Colors.blue,
+                                    backgroundImage: NetworkImage(
+                                        Environment.baseUrl +
+                                            snapshot.data![i].avatar),
+                                  ),
+                                  SizedBox(width: 5.w),
+                                  Row(
+                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                    children: [
+                                      Column(
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.start,
                                         children: [
                                           TextCustom(
-                                              text: 'liked ',
-                                              fontSize: 16.sp,
-                                              fontWeight: FontWeight.w500),
-                                          TextCustom(
-                                              text: 'to your post',
+                                              text: snapshot.data![i].follower,
+                                              fontWeight: FontWeight.w500,
                                               fontSize: 16.sp),
+                                          TextCustom(
+                                              text: timeago.format(
+                                                  snapshot.data![i].createdAt,
+                                                  locale: 'en_short'),
+                                              fontSize: 14.sp,
+                                              color: Colors.grey),
                                         ],
                                       ),
-                                  ],
-                                ),
-                              ],
-                            ),
-                            if (snapshot.data![i].typeNotification == '1')
-                              Card(
-                                color: CustomColors.primary,
-                                shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(50.r)),
-                                elevation: 0,
-                                child: InkWell(
-                                    borderRadius: BorderRadius.circular(50.r),
-                                    splashColor: Colors.white54,
-                                    onTap: () {
-                                      userBloc.add(OnAcceptFollowerRequestEvent(
-                                          snapshot.data![i].followersUid,
-                                          snapshot.data![i].uidNotification));
-                                    },
-                                    child: Padding(
-                                      padding: EdgeInsets.symmetric(
-                                          horizontal: 10.w, vertical: 5.h),
-                                      child: TextCustom(
-                                          text: 'Aceptar',
-                                          fontSize: 16.sp,
-                                          color: Colors.white),
-                                    )),
+                                      SizedBox(width: 5.w),
+                                      if (snapshot.data![i].typeNotification ==
+                                          '1')
+                                        TextCustom(
+                                            text: 'send a friend request ',
+                                            fontSize: 16.sp),
+                                      if (snapshot.data![i].typeNotification ==
+                                          '3')
+                                        TextCustom(
+                                            text: 'start to following',
+                                            fontSize: 16.sp),
+                                      if (snapshot.data![i].typeNotification ==
+                                          '2')
+                                        Row(
+                                          children: [
+                                            TextCustom(
+                                                text: 'liked ',
+                                                fontSize: 16.sp,
+                                                fontWeight: FontWeight.w500),
+                                            TextCustom(
+                                                text: 'to your post',
+                                                fontSize: 16.sp),
+                                          ],
+                                        ),
+                                    ],
+                                  ),
+                                ],
                               ),
-                          ],
-                        ),
-                      );
-                    },
-                  );
-          },
-        )),
+                              if (snapshot.data![i].typeNotification == '1')
+                                Card(
+                                  color: CustomColors.kPrimary,
+                                  shape: RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(50.r)),
+                                  elevation: 0,
+                                  child: InkWell(
+                                      borderRadius: BorderRadius.circular(50.r),
+                                      splashColor: Colors.white54,
+                                      onTap: () {
+                                        userBloc.add(OnAcceptFollowerRequestEvent(
+                                            snapshot.data![i].followersUid,
+                                            snapshot.data![i].uidNotification));
+                                      },
+                                      child: Padding(
+                                        padding: EdgeInsets.symmetric(
+                                            horizontal: 10.w, vertical: 5.h),
+                                        child: TextCustom(
+                                            text: 'Accept',
+                                            fontSize: 16.sp,
+                                            color: Colors.white),
+                                      )),
+                                ),
+                            ],
+                          ),
+                        );
+                      },
+                    );
+            },
+          )),
+        ),
       ),
     );
   }

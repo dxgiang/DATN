@@ -14,7 +14,7 @@ class TextCustom extends StatelessWidget {
   const TextCustom({
     Key? key,
     required this.text,
-    this.fontSize = 18,
+    this.fontSize = 15,
     this.fontWeight = FontWeight.normal,
     this.color = Colors.black,
     this.maxLines = 1,

@@ -61,7 +61,7 @@ class PrivacyProgilePage extends StatelessWidget {
                         const Spacer(),
                         (state.user != null && state.user!.isPrivate == 1)
                             ? const Icon(Icons.radio_button_checked_rounded,
-                                color: CustomColors.primary)
+                                color: CustomColors.kPrimary)
                             : const Icon(Icons.radio_button_unchecked_rounded),
                         SizedBox(width: 10.w),
                       ],
@@ -70,52 +70,52 @@ class PrivacyProgilePage extends StatelessWidget {
                   onTap: () => modalPrivacyProfile(context),
                 ),
               ),
-              const Divider(),
-              SizedBox(height: 10.h),
-              TextCustom(
-                  text: 'Interactions',
-                  fontSize: 16.sp,
-                  fontWeight: FontWeight.w500),
-              SizedBox(height: 10.h),
-              ItemProfile(
-                  text: 'Comments',
-                  icon: Icons.chat_bubble_outline_rounded,
-                  onPressed: () {}),
-              ItemProfile(
-                  text: 'Post', icon: Icons.add_box_outlined, onPressed: () {}),
-              ItemProfile(
-                  text: 'Mentions',
-                  icon: Icons.alternate_email_sharp,
-                  onPressed: () {}),
-              ItemProfile(
-                  text: 'Stories',
-                  icon: Icons.control_point_duplicate_rounded,
-                  onPressed: () {}),
-              ItemProfile(
-                  text: 'Messages', icon: Icons.send_rounded, onPressed: () {}),
-              const Divider(),
-              SizedBox(height: 10.h),
-              TextCustom(
-                  text: 'Connections',
-                  fontSize: 16.sp,
-                  fontWeight: FontWeight.w500),
-              SizedBox(height: 10.h),
-              ItemProfile(
-                  text: 'Restricted accounts',
-                  icon: Icons.no_accounts_outlined,
-                  onPressed: () {}),
-              ItemProfile(
-                  text: 'Blocked accounts',
-                  icon: Icons.highlight_off_rounded,
-                  onPressed: () {}),
-              ItemProfile(
-                  text: 'Muted accounts',
-                  icon: Icons.notifications_off_outlined,
-                  onPressed: () {}),
-              ItemProfile(
-                  text: 'Accounts you\'re following',
-                  icon: Icons.people_alt_outlined,
-                  onPressed: () {}),
+              // const Divider(),
+              // SizedBox(height: 10.h),
+              // TextCustom(
+                  // text: 'Interactions',
+                  // fontSize: 16.sp,
+                  // fontWeight: FontWeight.w500),
+              // SizedBox(height: 10.h),
+              // ItemProfile(
+                  // text: 'Comments',
+                  // icon: Icons.chat_bubble_outline_rounded,
+                  // onPressed: () {}),
+              // ItemProfile(
+                  // text: 'Post', icon: Icons.add_box_outlined, onPressed: () {}),
+              // ItemProfile(
+                  // text: 'Mentions',
+                  // icon: Icons.alternate_email_sharp,
+                  // onPressed: () {}),
+              // ItemProfile(
+                  // text: 'Stories',
+                  // icon: Icons.control_point_duplicate_rounded,
+                  // onPressed: () {}),
+              // ItemProfile(
+                  // text: 'Messages', icon: Icons.send_rounded, onPressed: () {}),
+              // const Divider(),
+              // SizedBox(height: 10.h),
+              // TextCustom(
+                  // text: 'Connections',
+                  // fontSize: 16.sp,
+                  // fontWeight: FontWeight.w500),
+              // SizedBox(height: 10.h),
+              // ItemProfile(
+                  // text: 'Restricted accounts',
+                  // icon: Icons.no_accounts_outlined,
+                  // onPressed: () {}),
+              // ItemProfile(
+                  // text: 'Blocked accounts',
+                  // icon: Icons.highlight_off_rounded,
+                  // onPressed: () {}),
+              // ItemProfile(
+                  // text: 'Muted accounts',
+                  // icon: Icons.notifications_off_outlined,
+                  // onPressed: () {}),
+              // ItemProfile(
+                  // text: 'Accounts you\'re following',
+                  // icon: Icons.people_alt_outlined,
+                  // onPressed: () {}),
             ],
           ),
         ),

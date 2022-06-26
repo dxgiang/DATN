@@ -28,10 +28,10 @@ class StartedPage extends StatelessWidget {
                 children: [
                   Image.asset(SocialMediaAssets.logoBlack, height: 30.h),
                   const TextCustom(
-                      text: 'Social',
+                      text: 'Flu',
                       fontWeight: FontWeight.w500,
-                      color: CustomColors.primary),
-                  TextCustom(text: ' Media', fontSize: 17.sp)
+                      color: CustomColors.kPrimary),
+                  TextCustom(text: 'Social', fontSize: 14.sp)
                 ],
               ),
             ),
@@ -43,11 +43,11 @@ class StartedPage extends StatelessWidget {
               ),
             ),
             TextCustom(
-              text: 'Welcome !',
+              text: 'Welcome to FluSocial!',
               letterSpacing: 2.0,
-              color: CustomColors.secundary,
+              color: CustomColors.kSecondary1,
               fontWeight: FontWeight.w600,
-              fontSize: 30.sp,
+              fontSize: 26.sp,
             ),
             SizedBox(height: 10.h),
             Padding(
@@ -68,7 +68,7 @@ class StartedPage extends StatelessWidget {
                 width: size.width,
                 child: TextButton(
                   style: TextButton.styleFrom(
-                      backgroundColor: CustomColors.secundary,
+                      backgroundColor: CustomColors.kSecondary1,
                       shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(12.r))),
                   child: TextCustom(
@@ -87,11 +87,11 @@ class StartedPage extends StatelessWidget {
                 decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(12.r),
                     border: Border.all(
-                        color: CustomColors.secundary, width: 1.5.w)),
+                        color: CustomColors.kSecondary1, width: 1.5.w)),
                 child: TextButton(
                   child: TextCustom(
                       text: 'Register',
-                      color: CustomColors.secundary,
+                      color: CustomColors.kSecondary1,
                       fontSize: 20.sp),
                   onPressed: () => Navigator.push(
                       context, routeSlide(page: const RegisterPage())),

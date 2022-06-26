@@ -136,6 +136,7 @@ class _ListFotosAnotherProfile extends StatelessWidget {
                     child: Container(
                       alignment: Alignment.center,
                       decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(5.r),
                           image: DecorationImage(
                               fit: BoxFit.cover,
                               image: NetworkImage(
@@ -199,7 +200,7 @@ class _BtnFollowAndMessage extends StatelessWidget {
             decoration: BoxDecoration(
                 color: isFriend == 1 || isPendingFollowers == 1
                     ? Colors.white
-                    : CustomColors.primary,
+                    : CustomColors.kPrimary,
                 border: Border.all(
                     color: isFriend == 1 || isPendingFollowers == 1
                         ? Colors.grey
@@ -227,9 +228,7 @@ class _BtnFollowAndMessage extends StatelessWidget {
                         shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(50.r))),
                     child: TextCustom(
-                        text: 'Pendiente',
-                        fontSize: 20.sp,
-                        color: Colors.black),
+                        text: 'Pending', fontSize: 20.sp, color: Colors.black),
                     onPressed: () {},
                   )),
         Container(
@@ -244,12 +243,14 @@ class _BtnFollowAndMessage extends StatelessWidget {
                     borderRadius: BorderRadius.circular(50.r))),
             child: TextCustom(text: 'Message', fontSize: 20.sp),
             onPressed: () => Navigator.push(
-                context,
-                routeFade(
-                    page: ChatMessagesPage(
-                        uidUserTarget: uidUser,
-                        usernameTarget: username,
-                        avatarTarget: avatar))),
+              context,
+              routeFade(
+                page: ChatMessagesPage(
+                    uidUserTarget: uidUser,
+                    usernameTarget: username,
+                    avatarTarget: avatar),
+              ),
+            ),
           ),
         )
       ],
@@ -392,7 +393,9 @@ class _CoverAndProfile extends StatelessWidget {
           Positioned(
               right: 0,
               child: IconButton(
-                onPressed: () => modalOptionsAnotherUser(context),
+                onPressed: () {
+                  // return modalOptionsAnotherUser(context);
+                },
                 icon: const Icon(Icons.dashboard_customize_outlined,
                     color: Colors.white),
               )),

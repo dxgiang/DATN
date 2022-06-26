@@ -66,73 +66,80 @@ class _AccountProfilePageState extends State<AccountProfilePage> {
               onPressed: () => Navigator.pop(context));
         }
       },
-      child: Scaffold(
-        backgroundColor: Colors.white,
-        appBar: AppBar(
+      child: WillPopScope(
+        onWillPop: () async {
+          return false;
+        },
+        child: Scaffold(
           backgroundColor: Colors.white,
-          title: TextCustom(text: 'Update profile', fontSize: 19.sp),
-          elevation: 0,
-          leading: IconButton(
-            highlightColor: Colors.transparent,
-            onPressed: () => Navigator.pop(context),
-            icon: const Icon(Icons.arrow_back_ios_new_rounded,
-                color: Colors.black),
+          appBar: AppBar(
+            backgroundColor: Colors.white,
+            title: TextCustom(text: 'Update profile', fontSize: 19.sp),
+            elevation: 0,
+            leading: IconButton(
+              highlightColor: Colors.transparent,
+              onPressed: () => Navigator.pop(context),
+              icon: const Icon(Icons.arrow_back_ios_new_rounded,
+                  color: Colors.black),
+            ),
+            actions: [
+              TextButton(
+                  onPressed: () {
+                    if (_keyForm.currentState!.validate()) {
+                      userBloc.add(OnUpdateProfileEvent(
+                          _userController.text.trim(),
+                          _descriptionController.text.trim(),
+                          _fullNameController.text.trim(),
+                          _phoneController.text.trim()));
+                    }
+                  },
+                  child: TextCustom(
+                      text: 'Save',
+                      color: CustomColors.kPrimary,
+                      fontSize: 14.sp))
+            ],
           ),
-          actions: [
-            TextButton(
-                onPressed: () {
-                  if (_keyForm.currentState!.validate()) {
-                    userBloc.add(OnUpdateProfileEvent(
-                        _userController.text.trim(),
-                        _descriptionController.text.trim(),
-                        _fullNameController.text.trim(),
-                        _phoneController.text.trim()));
-                  }
-                },
-                child: TextCustom(
-                    text: 'Save', color: CustomColors.primary, fontSize: 14.sp))
-          ],
-        ),
-        body: Form(
-          key: _keyForm,
-          child: SafeArea(
-            child: ListView(
-              padding: EdgeInsets.symmetric(horizontal: 20.w),
-              children: [
-                SizedBox(height: 20.h),
-                TextFormProfile(
-                    controller: _userController,
-                    labelText: 'User',
-                    validator: MultiValidator([
-                      RequiredValidator(errorText: 'User is required'),
-                      MinLengthValidator(3, errorText: 'Minimum 3 characters')
-                    ])),
-                SizedBox(height: 10.h),
-                TextFormProfile(
-                    controller: _descriptionController,
-                    labelText: 'Description',
-                    maxLines: 3),
-                SizedBox(height: 20.h),
-                TextFormProfile(
-                  controller: _emailController,
-                  isReadOnly: true,
-                  labelText: 'Email',
-                ),
-                SizedBox(height: 20.h),
-                TextFormProfile(
-                    controller: _fullNameController,
-                    labelText: 'Fullname',
-                    validator: MultiValidator([
-                      RequiredValidator(errorText: 'Name is required'),
-                      MinLengthValidator(3, errorText: 'Minimum 3 characters')
-                    ])),
-                SizedBox(height: 20.h),
-                TextFormProfile(
-                  controller: _phoneController,
-                  labelText: 'Phone',
-                  keyboardType: TextInputType.number,
-                ),
-              ],
+          body: Form(
+            key: _keyForm,
+            child: SafeArea(
+              child: ListView(
+                padding: EdgeInsets.symmetric(horizontal: 20.w),
+                children: [
+                  SizedBox(height: 20.h),
+                  TextFormProfile(
+                      controller: _userController,
+                      labelText: 'Username',
+                      validator: MultiValidator([
+                        RequiredValidator(errorText: 'Username is required'),
+                        MinLengthValidator(3, errorText: 'Minimum 3 characters')
+                      ])),
+                  SizedBox(height: 10.h),
+                  TextFormProfile(
+                      controller: _descriptionController,
+                      labelText: 'Description',
+                      maxLines: 3),
+                  SizedBox(height: 20.h),
+                  TextFormProfile(
+                    controller: _emailController,
+                    isReadOnly: true,
+                    labelText: 'Your Email',
+                  ),
+                  SizedBox(height: 20.h),
+                  TextFormProfile(
+                      controller: _fullNameController,
+                      labelText: 'Fullname',
+                      validator: MultiValidator([
+                        RequiredValidator(errorText: 'Name is required'),
+                        MinLengthValidator(3, errorText: 'Minimum 3 characters')
+                      ])),
+                  SizedBox(height: 20.h),
+                  TextFormProfile(
+                    controller: _phoneController,
+                    labelText: 'Phone',
+                    keyboardType: TextInputType.number,
+                  ),
+                ],
+              ),
             ),
           ),
         ),

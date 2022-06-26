@@ -17,7 +17,7 @@ class ReelHomeScreen extends StatelessWidget {
             height: MediaQuery.of(context).size.height,
             width: MediaQuery.of(context).size.width,
             color: Colors.black,
-            child: Image.asset(SocialMediaAssets.logo),
+            child: Image.asset(SocialMediaAssets.flutter3),
           ),
           Positioned(
               left: 15.w,
@@ -36,14 +36,15 @@ class ReelHomeScreen extends StatelessWidget {
                   Row(
                     children: [
                       CircleAvatar(
-                          radius: 15.r,
-                          child: Image.asset(SocialMediaAssets.logo)),
+                          radius: 17.r,
+                          child: SvgPicture.asset(SocialMediaAssets.dartLogo)),
                       SizedBox(width: 10.w),
                       TextCustom(
-                          text: 'FrankPe',
+                          text: 'Test',
                           color: Colors.white,
                           fontWeight: FontWeight.w500,
                           fontSize: 14.sp),
+                      SizedBox(width: 10.w),
                       Container(
                         padding: EdgeInsets.symmetric(
                             horizontal: 10.w, vertical: 3.h),
@@ -133,7 +134,7 @@ class ReelHomeScreen extends StatelessWidget {
                       decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(3.r),
                           border: Border.all(color: Colors.white, width: 2.w)),
-                      child: Image.asset(SocialMediaAssets.logo))
+                      child: SvgPicture.asset(SocialMediaAssets.dartLogo))
                 ],
               ))
         ],

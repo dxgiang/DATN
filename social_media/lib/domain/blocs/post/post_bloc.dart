@@ -14,6 +14,7 @@ class PostBloc extends Bloc<PostEvent, PostState> {
     on<OnClearSelectedImageEvent>(_onClearSelectedImage);
     on<OnAddNewPostEvent>(_addNewPost);
     on<OnSavePostByUser>(_savePostByUser);
+    // on<OnDeletePostByUser> (_deletePostByUser);
     on<OnIsSearchPostEvent>(_isSearchPost);
     on<OnLikeOrUnLikePost>(_likeOrUnlikePost);
     on<OnAddNewCommentEvent>(_addNewComment);
@@ -68,6 +69,23 @@ class PostBloc extends Bloc<PostEvent, PostState> {
       emit(LoadingSavePost());
 
       final data = await postService.savePostByUser(event.idPost);
+
+      if (data.resp) {
+        emit(SuccessPost());
+      } else {
+        emit(FailurePost(data.message));
+      }
+    } catch (e) {
+      emit(FailurePost(e.toString()));
+    }
+  }
+
+  Future<void> _deletePostByUser(
+      OnSavePostByUser event, Emitter<PostState> emit) async {
+    try {
+      emit(LoadingSavePost());
+
+      final data = await postService.deletePostByUser(event.idPost);
 
       if (data.resp) {
         emit(SuccessPost());

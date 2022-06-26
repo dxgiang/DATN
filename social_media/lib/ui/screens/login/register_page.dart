@@ -84,11 +84,11 @@ class _RegisterPageState extends State<RegisterPage> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     TextCustom(
-                        text: 'Hello!',
+                        text: 'Welcome to FluSocial!',
                         letterSpacing: 1.5,
                         fontWeight: FontWeight.w500,
                         fontSize: 28.sp,
-                        color: CustomColors.secundary),
+                        color: CustomColors.kSecondary1),
                     SizedBox(height: 10.h),
                     TextCustom(
                       text: 'Create a new account.',
@@ -105,14 +105,14 @@ class _RegisterPageState extends State<RegisterPage> {
                     SizedBox(height: 40.h),
                     TextFieldCustom(
                       controller: userController,
-                      hintText: 'User',
+                      hintText: 'Username',
                       validator:
                           RequiredValidator(errorText: 'User is required'),
                     ),
                     SizedBox(height: 40.h),
                     TextFieldCustom(
                       controller: emailController,
-                      hintText: 'Email',
+                      hintText: 'Enter Your Email',
                       keyboardType: TextInputType.emailAddress,
                       validator: validatedEmail,
                     ),

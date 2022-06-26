@@ -233,24 +233,24 @@ class _ListPhotosProfilePageState extends State<ListPhotosProfilePage> {
                                                   ),
                                                 ],
                                               ),
-                                              Row(
-                                                children: [
-                                                  IconButton(
-                                                      onPressed: () {},
-                                                      icon: SvgPicture.asset(
-                                                          SocialMediaAssets
-                                                              .sendIcon,
-                                                          height: 24.h,
-                                                          color: Colors.white)),
-                                                  IconButton(
-                                                      onPressed: () {},
-                                                      icon: const Icon(
-                                                          Icons
-                                                              .bookmark_outline_sharp,
-                                                          size: 27,
-                                                          color: Colors.white))
-                                                ],
-                                              ),
+                                              // Row(
+                                              //   children: [
+                                              //     IconButton(
+                                              //         onPressed: () {},
+                                              //         icon: SvgPicture.asset(
+                                              //             SocialMediaAssets
+                                              //                 .sendIcon,
+                                              //             height: 24.h,
+                                              //             color: Colors.white)),
+                                              //     IconButton(
+                                              //         onPressed: () {},
+                                              //         icon: const Icon(
+                                              //             Icons
+                                              //                 .bookmark_outline_sharp,
+                                              //             size: 27,
+                                              //             color: Colors.white))
+                                              //   ],
+                                              // ),
                                             ],
                                           ),
                                         ),

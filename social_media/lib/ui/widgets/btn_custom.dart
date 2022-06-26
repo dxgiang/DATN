@@ -19,7 +19,7 @@ class BtnCustom extends StatelessWidget {
       this.border = 8.0,
       this.colorText = Colors.white,
       this.fontSize = 21,
-      this.backgroundColor = CustomColors.secundary})
+      this.backgroundColor = CustomColors.kSecondary1})
       : super(key: key);
 
   @override

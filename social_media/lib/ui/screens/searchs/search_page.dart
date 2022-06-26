@@ -10,6 +10,7 @@ import 'package:social_media/domain/services/user_services.dart';
 import 'package:social_media/ui/helpers/helpers.dart';
 import 'package:social_media/domain/models/response/response_search.dart';
 import 'package:social_media/ui/screens/profile/profile_another_user_page.dart';
+import 'package:social_media/ui/themes/color_custom.dart';
 import 'package:social_media/ui/widgets/widgets.dart';
 
 class SearchPage extends StatefulWidget {
@@ -18,6 +19,8 @@ class SearchPage extends StatefulWidget {
   @override
   State<SearchPage> createState() => _SearchPageState();
 }
+
+bool saveTheme = false;
 
 class _SearchPageState extends State<SearchPage> {
   late TextEditingController _searchController;
@@ -40,59 +43,87 @@ class _SearchPageState extends State<SearchPage> {
     final size = MediaQuery.of(context).size;
     final postBloc = BlocProvider.of<PostBloc>(context);
 
-    return Scaffold(
-      backgroundColor: Colors.white,
-      body: SafeArea(
-        child: ListView(
-          physics: const BouncingScrollPhysics(),
-          padding: EdgeInsets.only(top: 10.h),
-          children: [
-            Padding(
-              padding: EdgeInsets.symmetric(horizontal: 15.w),
-              child: Container(
-                padding: EdgeInsets.only(left: 10.w, right: 10.w),
-                height: 45.h,
-                width: size.width,
-                decoration: BoxDecoration(
-                    color: Colors.grey[100],
-                    borderRadius: BorderRadius.circular(10.r)),
-                child: BlocBuilder<PostBloc, PostState>(
-                  builder: (context, state) => TextField(
-                    controller: _searchController,
-                    onChanged: (value) {
-                      if (value.isNotEmpty) {
-                        postBloc.add(OnIsSearchPostEvent(true));
-                        userService.searchUsers(value);
-                      } else {
-                        postBloc.add(OnIsSearchPostEvent(false));
-                      }
-                    },
-                    decoration: InputDecoration(
-                        border: InputBorder.none,
-                        hintText: 'Search',
-                        hintStyle: GoogleFonts.roboto(fontSize: 17.sp),
-                        suffixIcon: const Icon(Icons.search_rounded)),
+    return WillPopScope(
+      onWillPop: () async {
+        return false;
+      },
+      child: Scaffold(
+        backgroundColor: Colors.white,
+        body: SafeArea(
+          child: ListView(
+            physics: const BouncingScrollPhysics(),
+            padding: EdgeInsets.only(top: 10.h),
+            children: [
+              Padding(
+                padding: EdgeInsets.symmetric(horizontal: 15.w),
+                child: Container(
+                  padding: EdgeInsets.only(left: 15.w, right: 15.w),
+                  height: 45.h,
+                  width: size.width,
+                  decoration: BoxDecoration(
+                    color: saveTheme
+                        ? CustomColors.backgroundColor
+                        : CustomColors.backgroundColorWhite,
+                    borderRadius: BorderRadius.circular(23),
+                    boxShadow: [
+                      BoxShadow(
+                        spreadRadius: 0,
+                        blurRadius: 20,
+                        offset: const Offset(5, 10),
+                        color: saveTheme ? Colors.black : Colors.grey,
+                      ),
+                    ],
+                  ),
+                  child: BlocBuilder<PostBloc, PostState>(
+                    builder: (context, state) => TextField(
+                        controller: _searchController,
+                        onChanged: (value) {
+                          if (value.isNotEmpty) {
+                            postBloc.add(OnIsSearchPostEvent(true));
+                            userService.searchUsers(value);
+                          } else {
+                            postBloc.add(OnIsSearchPostEvent(false));
+                          }
+                        },
+                        decoration: InputDecoration(
+                          hintText: 'Search ...',
+                          hintStyle: GoogleFonts.roboto(fontSize: 17.sp),
+                          fillColor: Colors.grey,
+                          focusColor: Colors.grey,
+                          hoverColor: Colors.grey,
+                          border: InputBorder.none,
+                          suffixIcon: Icon(Icons.search_rounded,
+                              size: 23,
+                              color: saveTheme
+                                  ? Colors.white
+                                  : CustomColors.backgroundColor),
+                          suffixStyle: TextStyle(
+                              color: saveTheme
+                                  ? CustomColors.backgroundColorWhite
+                                  : CustomColors.backgroundColor),
+                        ),
+                        cursorColor: Colors.grey),
                   ),
                 ),
               ),
-            ),
-            SizedBox(height: 10.h),
-            BlocBuilder<PostBloc, PostState>(
-                buildWhen: (previous, current) => previous != current,
-                builder: (context, state) => !state.isSearchFriend
-                    ? FutureBuilder<List<Post>>(
-                        future: postService.getAllPostsForSearch(),
-                        builder: (context, snapshot) {
-                          return !snapshot.hasData
-                              ? const _ShimerSearch()
-                              : _GridPostSearch(posts: snapshot.data!);
-                        },
-                      )
-                    : streamSearchUser())
-          ],
+              SizedBox(height: 10.h),
+              BlocBuilder<PostBloc, PostState>(
+                  buildWhen: (previous, current) => previous != current,
+                  builder: (context, state) => !state.isSearchFriend
+                      ? FutureBuilder<List<Post>>(
+                          future: postService.getAllPostsForSearch(),
+                          builder: (context, snapshot) {
+                            return !snapshot.hasData
+                                ? const _ShimerSearch()
+                                : _GridPostSearch(posts: snapshot.data!);
+                          },
+                        )
+                      : streamSearchUser())
+            ],
+          ),
         ),
+        bottomNavigationBar: const BottomNavigationCustom(index: 2),
       ),
-      bottomNavigationBar: const BottomNavigationCustom(index: 2),
     );
   }
 
@@ -180,31 +211,35 @@ class _GridPostSearch extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GridView.builder(
-        physics: const NeverScrollableScrollPhysics(),
-        gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-            crossAxisCount: 3,
-            crossAxisSpacing: 2,
-            mainAxisSpacing: 2,
-            mainAxisExtent: 170),
-        scrollDirection: Axis.vertical,
-        shrinkWrap: true,
-        itemCount: posts.length,
-        itemBuilder: (context, i) {
-          final List<String> listImages = posts[i].images.split(',');
+    return Padding(
+      padding: EdgeInsets.only(top: 0, left: 15.w, right: 20.w),
+      child: GridView.builder(
+          physics: const NeverScrollableScrollPhysics(),
+          gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+              crossAxisCount: 3,
+              crossAxisSpacing: 2,
+              mainAxisSpacing: 2,
+              mainAxisExtent: 170),
+          scrollDirection: Axis.vertical,
+          shrinkWrap: true,
+          itemCount: posts.length,
+          itemBuilder: (context, i) {
+            final List<String> listImages = posts[i].images.split(',');
 
-          return GestureDetector(
-            onTap: () {},
-            onLongPress: () => modalShowPost(context, post: posts[i]),
-            child: Container(
-                alignment: Alignment.center,
-                decoration: BoxDecoration(
-                    image: DecorationImage(
-                        fit: BoxFit.cover,
-                        image: NetworkImage(
-                            Environment.baseUrl + listImages.first)))),
-          );
-        });
+            return GestureDetector(
+              onTap: () {},
+              onLongPress: () => modalShowPost(context, post: posts[i]),
+              child: Container(
+                  alignment: Alignment.center,
+                  decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(5.r),
+                      image: DecorationImage(
+                          fit: BoxFit.cover,
+                          image: NetworkImage(
+                              Environment.baseUrl + listImages.first)))),
+            );
+          }),
+    );
   }
 }
 

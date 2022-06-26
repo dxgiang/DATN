@@ -3,6 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:social_media/commons/assets.dart';
+import 'package:social_media/main.dart';
 import 'package:timeago/timeago.dart' as timeago;
 import 'package:social_media/ui/helpers/animation_route.dart';
 import 'package:social_media/domain/models/response/response_list_chat.dart';
@@ -37,41 +38,41 @@ class _ListMessagesPageState extends State<ListMessagesPage> {
             onPressed: () => Navigator.pop(context),
             icon: const Icon(Icons.arrow_back_ios_new_rounded,
                 color: Colors.black87)),
-        actions: [
-          IconButton(
-              onPressed: () {},
-              icon:
-                  SvgPicture.asset(SocialMediaAssets.newMessage, height: 23.h))
-        ],
+        // actions: [
+        //   IconButton(
+        //       onPressed: () {},
+        //       icon:
+        //           SvgPicture.asset(SocialMediaAssets.newMessage, height: 23.h))
+        // ],
       ),
       body: Padding(
         padding: EdgeInsets.symmetric(horizontal: 10.w),
         child: Column(
           children: [
             SizedBox(height: 10.h),
-            Container(
-              height: 50.h,
-              decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(10.r),
-                  border: Border.all(color: Colors.grey[300]!)),
-              child: Row(
-                children: [
-                  Expanded(
-                    child: TextField(
-                      decoration: InputDecoration(
-                        contentPadding: EdgeInsets.only(left: 10.w),
-                        hintText: 'Search',
-                        hintStyle: GoogleFonts.roboto(
-                            letterSpacing: .8, fontSize: 17.sp),
-                        border: InputBorder.none,
-                      ),
-                    ),
-                  ),
-                  const Icon(Icons.search),
-                  SizedBox(width: 10.w)
-                ],
-              ),
-            ),
+            // Container(
+            //   height: 50.h,
+            //   decoration: BoxDecoration(
+            //       borderRadius: BorderRadius.circular(10.r),
+            //       border: Border.all(color: Colors.grey[300]!)),
+            //   child: Row(
+            //     children: [
+            //       Expanded(
+            //         child: TextField(
+            //           decoration: InputDecoration(
+            //             contentPadding: EdgeInsets.only(left: 10.w),
+            //             hintText: 'Search',
+            //             hintStyle: GoogleFonts.roboto(
+            //                 letterSpacing: .8, fontSize: 17.sp),
+            //             border: InputBorder.none,
+            //           ),
+            //         ),
+            //       ),
+            //       const Icon(Icons.search),
+            //       SizedBox(width: 10.w)
+            //     ],
+            //   ),
+            // ),
             SizedBox(height: 20.h),
             Flexible(
                 child: FutureBuilder<List<ListChat>>(
@@ -92,13 +93,15 @@ class _ListMessagesPageState extends State<ListMessagesPage> {
                         itemCount: snapshot.data!.length,
                         itemBuilder: (context, i) => InkWell(
                               onTap: () => Navigator.push(
-                                  context,
-                                  routeFade(
-                                      page: ChatMessagesPage(
+                                context,
+                                routeFade(
+                                  page: ChatMessagesPage(
                                     uidUserTarget: snapshot.data![i].targetUid,
                                     usernameTarget: snapshot.data![i].username,
                                     avatarTarget: snapshot.data![i].avatar,
-                                  ))),
+                                  ),
+                                ),
+                              ),
                               borderRadius: BorderRadius.circular(10.r),
                               child: Container(
                                 padding: EdgeInsets.symmetric(

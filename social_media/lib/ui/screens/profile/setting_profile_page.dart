@@ -27,7 +27,7 @@ class SettingProfilePage extends StatelessWidget {
       appBar: AppBar(
         backgroundColor: Colors.white,
         title: TextCustom(
-            text: 'Configuration',
+            text: 'Settings',
             fontSize: 19.sp,
             fontWeight: FontWeight.w500),
         elevation: 0,
@@ -40,30 +40,30 @@ class SettingProfilePage extends StatelessWidget {
         child: ListView(
           padding: EdgeInsets.symmetric(horizontal: 15.w, vertical: 10.h),
           children: [
-            Container(
-              height: 35.h,
-              width: double.infinity,
-              decoration: BoxDecoration(
-                  color: Colors.grey[50],
-                  borderRadius: BorderRadius.circular(10.r)),
-              child: TextFormField(
-                decoration: InputDecoration(
-                    border: InputBorder.none,
-                    hintText: 'Search',
-                    hintStyle:
-                        GoogleFonts.getFont('Roboto', color: Colors.grey[400]),
-                    prefixIcon: const Icon(Icons.search)),
-              ),
-            ),
+            // Container(
+            //   height: 35.h,
+            //   width: double.infinity,
+            //   decoration: BoxDecoration(
+            //       color: Colors.grey[50],
+            //       borderRadius: BorderRadius.circular(10.r)),
+            //   child: TextFormField(
+            //     decoration: InputDecoration(
+            //         border: InputBorder.none,
+            //         hintText: 'Search',
+            //         hintStyle:
+            //             GoogleFonts.getFont('Roboto', color: Colors.grey[400]),
+            //         prefixIcon: const Icon(Icons.search)),
+            //   ),
+            // ),
             SizedBox(height: 15.h),
-            ItemProfile(
-                text: 'Follow and invite a friend',
-                icon: Icons.person_add_alt,
-                onPressed: () {}),
-            ItemProfile(
-                text: 'Notifications',
-                icon: Icons.notifications_none_rounded,
-                onPressed: () {}),
+            // ItemProfile(
+            //     text: 'Follow and invite a friend',
+            //     icon: Icons.person_add_alt,
+            //     onPressed: () {}),
+            // ItemProfile(
+            //     text: 'Notifications',
+            //     icon: Icons.notifications_none_rounded,
+            //     onPressed: () {}),
             ItemProfile(
                 text: 'Privacy',
                 icon: Icons.lock_outline_rounded,
@@ -79,31 +79,31 @@ class SettingProfilePage extends StatelessWidget {
                 icon: Icons.account_circle_outlined,
                 onPressed: () => Navigator.push(
                     context, routeSlide(page: const AccountProfilePage()))),
-            ItemProfile(
-                text: 'Help',
-                icon: Icons.help_outline_rounded,
-                onPressed: () {}),
-            ItemProfile(
-                text: 'About',
-                icon: Icons.info_outline_rounded,
-                onPressed: () {}),
-            ItemProfile(
-                text: 'Languages',
-                icon: Icons.language_outlined,
-                onPressed: () => Navigator.push(
-                    context, routeSlide(page: const LanguagePage()))),
-            ItemProfile(
-                text: 'Themes',
-                icon: Icons.palette_outlined,
-                onPressed: () => Navigator.push(
-                    context, routeSlide(page: const ThemeProfilePage()))),
+            // ItemProfile(
+            //     text: 'Help',
+            //     icon: Icons.help_outline_rounded,
+            //     onPressed: () {}),
+            // ItemProfile(
+            //     text: 'About',
+            //     icon: Icons.info_outline_rounded,
+            //     onPressed: () {}),
+            // ItemProfile(
+            //     text: 'Languages',
+            //     icon: Icons.language_outlined,
+            //     onPressed: () => Navigator.push(
+            //         context, routeSlide(page: const LanguagePage()))),
+            // ItemProfile(
+            //     text: 'Themes',
+            //     icon: Icons.palette_outlined,
+            //     onPressed: () => Navigator.push(
+            //         context, routeSlide(page: const ThemeProfilePage()))),
             SizedBox(height: 20.h),
             Row(
               children: [
                 const Icon(Icons.copyright_outlined),
                 SizedBox(width: 5.w),
                 TextCustom(
-                    text: 'SOCIAL MEDIA APP',
+                    text: 'FluSocial App',
                     fontSize: 17.sp,
                     fontWeight: FontWeight.w500),
               ],
@@ -112,15 +112,15 @@ class SettingProfilePage extends StatelessWidget {
             TextCustom(
                 text: 'Sessions', fontSize: 17.sp, fontWeight: FontWeight.w500),
             SizedBox(height: 10.h),
-            ItemProfile(
-                text: 'Add or change account',
-                icon: Icons.add,
-                colorText: CustomColors.primary,
-                onPressed: () {}),
+            // ItemProfile(
+            //     text: 'Add or change account',
+            //     icon: Icons.add,
+            //     colorText: CustomColors.kPrimary,
+            //     onPressed: () {}),
             ItemProfile(
                 text: 'Log out ${userBloc.state.user!.username}',
                 icon: Icons.logout_rounded,
-                colorText: CustomColors.primary,
+                colorText: CustomColors.kPrimary,
                 onPressed: () {
                   authBloc.add(OnLogOutEvent());
                   userBloc.add(OnLogOutUser());

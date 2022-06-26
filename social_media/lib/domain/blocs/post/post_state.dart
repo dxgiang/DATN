@@ -4,6 +4,7 @@ part of 'post_bloc.dart';
 class PostState {
   final int privacyPost;
   final List<File>? imageFileSelected;
+  
   final bool isSearchFriend;
 
   const PostState({

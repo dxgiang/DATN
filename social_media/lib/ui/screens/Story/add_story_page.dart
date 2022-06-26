@@ -18,6 +18,7 @@ class AddStoryPage extends StatefulWidget {
 }
 
 class _AddStoryPageState extends State<AddStoryPage> {
+  late Size size;
   late List<AssetEntity> _mediaList = [];
   late File fileImage;
 
@@ -39,7 +40,8 @@ class _AddStoryPageState extends State<AddStoryPage> {
           await PhotoManager.getAssetPathList(onlyAll: true);
 
       if (albums.isNotEmpty) {
-        List<AssetEntity> photos = await albums[0].getAssetListPaged(0, 90);
+        List<AssetEntity> photos =
+            await albums[0].getAssetListPaged(page: 0, size: 90);
         setState(() => _mediaList = photos);
       }
     } else {
@@ -94,7 +96,7 @@ class _AddStoryPageState extends State<AddStoryPage> {
                   child: TextCustom(
                       text: 'Done',
                       fontSize: 17.sp,
-                      color: CustomColors.primary)),
+                      color: CustomColors.kPrimary)),
             )
           ],
         ),
@@ -137,7 +139,8 @@ class _AddStoryPageState extends State<AddStoryPage> {
                         storyBloc.add(OnSelectedImagePreviewEvent(fileImage));
                       },
                       child: FutureBuilder(
-                        future: _mediaList[i].thumbDataWithSize(200, 200),
+                        future: _mediaList[i].thumbnailDataWithSize(
+                            const ThumbnailSize(200, 200)),
                         builder: (context, AsyncSnapshot<Uint8List?> snapshot) {
                           if (snapshot.connectionState ==
                               ConnectionState.done) {

@@ -1,32 +1,20 @@
 name: social_media
 description: A new Flutter project.
 
-# The following line prevents the package from being accidentally published to
-# pub.dev using `flutter pub publish`. This is preferred for private packages.
 publish_to: "none" # Remove this line if you wish to publish to pub.dev
 
-# The following defines the version and build number for your application.
-# A version number is three numbers separated by dots, like 1.2.43
-# followed by an optional build number separated by a +.
-# Both the version and the builder number may be overridden in flutter
-# build by specifying --build-name and --build-number, respectively.
-# In Android, build-name is used as versionName while build-number used as versionCode.
-# Read more about Android versioning at https://developer.android.com/studio/publish/versioning
-# In iOS, build-name is used as CFBundleShortVersionString while build-number used as CFBundleVersion.
-# Read more about iOS versioning at
-# https://developer.apple.com/library/archive/documentation/General/Reference/InfoPlistKeyReference/Articles/CoreFoundationKeys.html
 version: 1.0.0+1
 
 environment:
   sdk: ">=2.16.1 <3.0.0"
 
 dependencies:
-  cupertino_icons: ^1.0.4
+  cupertino_icons: ^1.0.5
   flutter:
     sdk: flutter
   flutter_localizations:
     sdk: flutter
-  intl: ^0.17.0  
+  intl: ^0.17.0
   flutter_bloc: ^8.0.1
   flutter_secure_storage: ^5.0.2
   flutter_svg: ^1.0.3
@@ -36,7 +24,7 @@ dependencies:
   image_picker: ^0.8.4+9
   permission_handler: ^9.2.0
   pin_code_fields: ^7.3.0
-  photo_manager: ^1.3.10
+  photo_manager: ^2.0.1
   carousel_slider: ^4.0.0
   shimmer: ^2.0.0
   timeago: ^3.2.2
@@ -52,8 +40,34 @@ dependencies:
   dio: ^4.0.6
   modal_bottom_sheet: ^2.0.1
   flutter_screenutil: ^5.5.3+2
+  firebase_core: ^1.18.0 # required for initializing firebase app
+  firebase_messaging: ^11.4.2 # required for sending/receiving messages through FCM
+  flutter_local_notifications: ^9.5.3+1 # required to show chat notifications
+  faker: ^2.0.0
+  # stream_chat: ^4.1.0
+  # stream_chat_flutter: ^4.2.0
+  # stream_chat_persistence: ^4.1.0
+  # stream_chat_localizations: ^3.1.0
+  # flutter_local_notifications: ^9.0.0
+  yaml: ^3.1.0
+  uuid: ^3.0.5
+  streaming_shared_preferences: ^2.0.0
+  lottie: ^1.2.1
+  collection: ^1.15.0
+  sentry_flutter: ^6.5.0
+  persistent_bottom_nav_bar: ^4.0.2
+  google_nav_bar: ^5.0.6
+  bottom_navy_bar: ^6.0.0
+  encrypt: ^5.0.1
+  photo_view: ^0.14.0
+  lazy_load_scrollview: ^1.3.0
+  flutter_custom_dialog: ^1.2.0
+  video_player: ^2.4.5
+  file_picker: ^4.6.1
+  modal_side_sheet: ^0.0.1
 
 dev_dependencies:
+  flutter_launcher_icons: ^0.9.3
   flutter_lints: ^1.0.0
   flutter_test:
     sdk: flutter
@@ -65,6 +79,7 @@ flutter:
   assets:
     - assets/images/svg/
     - assets/images/png/
+    - assets/videos/
 
 flutter_intl: # Add this line
   enabled: true # Add this line

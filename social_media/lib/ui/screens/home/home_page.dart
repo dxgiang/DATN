@@ -38,79 +38,84 @@ class _HomePageState extends State<HomePage> {
           setState(() {});
         }
       },
-      child: Scaffold(
-          backgroundColor: Colors.white,
-          appBar: AppBar(
+      child: WillPopScope(
+        onWillPop: () async {
+          return false;
+        },
+        child: Scaffold(
             backgroundColor: Colors.white,
-            title: TextCustom(
-              text: 'Social Media',
-              fontWeight: FontWeight.w600,
-              fontSize: 22.sp,
-              color: CustomColors.secundary,
-              isTitle: true,
-            ),
-            elevation: 0,
-            actions: [
-              IconButton(
-                  splashRadius: 20.r,
-                  onPressed: () {
-                    Navigator.pushAndRemoveUntil(
-                        context, routeSlide(page: AddPostPage()), (_) => false);
-                  },
-                  icon: SvgPicture.asset(SocialMediaAssets.addRounded,
-                      height: 32.h)),
-              IconButton(
-                  splashRadius: 20.r,
-                  onPressed: () => Navigator.pushAndRemoveUntil(
-                      context,
-                      routeSlide(page: const NotificationsPage()),
-                      (_) => false),
-                  icon: SvgPicture.asset(SocialMediaAssets.notificationIcon,
-                      height: 26.h)),
-              IconButton(
-                  splashRadius: 20.r,
-                  onPressed: () => Navigator.push(
-                      context, routeSlide(page: const ListMessagesPage())),
-                  icon: SvgPicture.asset(SocialMediaAssets.chatIcon,
-                      height: 24.h)),
-            ],
-          ),
-          body: SafeArea(
-            child: ListView(
-              physics: const BouncingScrollPhysics(),
-              children: [
-                const ListHistories(),
-                SizedBox(height: 5.h),
-                FutureBuilder<List<Post>>(
-                  future: postService.getAllPostHome(),
-                  builder: (_, snapshot) {
-                    if (snapshot.data != null && snapshot.data!.isEmpty) {
-                      return ListWithoutPosts();
-                    }
-
-                    return !snapshot.hasData
-                        ? Column(
-                            children: [
-                              const ShimmerCustom(),
-                              SizedBox(height: 10.h),
-                              const ShimmerCustom(),
-                              SizedBox(height: 10.h),
-                              const ShimmerCustom(),
-                            ],
-                          )
-                        : ListView.builder(
-                            physics: const NeverScrollableScrollPhysics(),
-                            shrinkWrap: true,
-                            itemCount: snapshot.data!.length,
-                            itemBuilder: (_, i) =>
-                                ListViewPosts(posts: snapshot.data![i]),
-                          );
-                  },
-                ),
+            appBar: AppBar(
+              backgroundColor: Colors.white,
+              title: TextCustom(
+                text: 'FluSocial',
+                fontWeight: FontWeight.w600,
+                fontSize: 22.sp,
+                color: CustomColors.kSecondary,
+                isTitle: true,
+              ),
+              elevation: 0,
+              actions: [
+                IconButton(
+                    splashRadius: 20.r,
+                    onPressed: () {
+                      Navigator.pushAndRemoveUntil(context,
+                          routeSlide(page: AddPostPage()), (_) => false);
+                    },
+                    icon: SvgPicture.asset(SocialMediaAssets.addRounded,
+                        height: 32.h)),
+                // IconButton(
+                //     splashRadius: 20.r,
+                //     onPressed: () => Navigator.pushAndRemoveUntil(
+                //         context,
+                //         routeSlide(page: const NotificationsPage()),
+                //         (_) => false),
+                //     icon: SvgPicture.asset(SocialMediaAssets.notificationIcon,
+                //         height: 26.h)),
+                IconButton(
+                    splashRadius: 20.r,
+                    onPressed: () => Navigator.push(
+                        context, routeSlide(page: const ListMessagesPage())),
+                    icon: SvgPicture.asset(SocialMediaAssets.chatIcon,
+                        height: 24.h)),
               ],
             ),
-          ),
-          bottomNavigationBar: const BottomNavigationCustom(index: 1)),
+            body: SafeArea(
+              child: ListView(
+                physics: const BouncingScrollPhysics(),
+                children: [
+                  const ListHistories(),
+                  SizedBox(height: 5.h),
+                  FutureBuilder<List<Post>>(
+                    future: postService.getAllPostHome(),
+                    builder: (_, snapshot) {
+                      if (snapshot.data != null && snapshot.data!.isEmpty) {
+                        return ListWithoutPosts();
+                      }
+
+                      return !snapshot.hasData
+                          ? Column(
+                              children: [
+                                const ShimmerCustom(),
+                                SizedBox(height: 10.h),
+                                const ShimmerCustom(),
+                                SizedBox(height: 10.h),
+                                const ShimmerCustom(),
+                              ],
+                            )
+                          : ListView.builder(
+                              physics: const NeverScrollableScrollPhysics(),
+                              shrinkWrap: true,
+                              itemCount: snapshot.data!.length,
+                              itemBuilder: (_, i) =>
+                                  ListViewPosts(posts: snapshot.data![i]),
+                            );
+                    },
+                  ),
+                ],
+              ),
+            ),
+            bottomNavigationBar: const BottomNavigationCustom(index: 1)),
+      ),
     );
   }
 }

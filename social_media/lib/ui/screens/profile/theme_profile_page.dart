@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:social_media/cubit/bloc/theme_bloc.dart';
+import 'package:social_media/ui/themes/app_themes.dart';
 import 'package:social_media/ui/themes/color_custom.dart';
 import 'package:social_media/ui/widgets/widgets.dart';
 
@@ -30,7 +33,7 @@ class ThemeProfilePage extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: const [
                   TextCustom(text: 'Light'),
-                  Icon(Icons.radio_button_checked, color: CustomColors.primary)
+                  Icon(Icons.radio_button_checked, color: CustomColors.kPrimary)
                 ],
               ),
               SizedBox(height: 20.h),

@@ -16,10 +16,10 @@ void modalWarning(BuildContext context, String text) {
             Row(
               children: const [
                 TextCustom(
-                    text: 'Social ',
+                    text: 'Flu ',
                     color: Colors.amber,
                     fontWeight: FontWeight.w500),
-                TextCustom(text: 'Media', fontWeight: FontWeight.w500),
+                TextCustom(text: 'Social', fontWeight: FontWeight.w500),
               ],
             ),
             const Divider(),

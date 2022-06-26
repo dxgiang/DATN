@@ -33,6 +33,12 @@ class OnSavePostByUser extends PostEvent {
   OnSavePostByUser(this.idPost);
 }
 
+class OnDeletePostByUser extends PostEvent {
+  final String uidPost;
+  final String uidPerson;
+  OnDeletePostByUser(this.uidPost,this.uidPerson);
+}
+
 class OnIsSearchPostEvent extends PostEvent {
   final bool isSearchFriend;
 

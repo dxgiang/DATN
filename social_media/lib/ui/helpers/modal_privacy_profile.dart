@@ -60,20 +60,20 @@ modalPrivacyProfile(BuildContext context) {
                     color: Colors.grey)
               ],
             ),
-            const SizedBox(height: 10.0),
-            Row(
-              children: [
-                const Icon(Icons.chat_bubble_outline_rounded,
-                    size: 30, color: Colors.black),
-                SizedBox(width: 10.w),
-                TextCustom(
-                  text: 'This will not change who can tag you \n@mention',
-                  fontSize: 15.sp,
-                  color: Colors.grey,
-                  maxLines: 2,
-                )
-              ],
-            ),
+            // const SizedBox(height: 10.0),
+            // Row(
+            //   children: [
+            //     const Icon(Icons.chat_bubble_outline_rounded,
+            //         size: 30, color: Colors.black),
+            //     SizedBox(width: 10.w),
+            //     TextCustom(
+            //       text: 'This will not change who can tag you \n@mention',
+            //       fontSize: 15.sp,
+            //       color: Colors.grey,
+            //       maxLines: 2,
+            //     )
+            //   ],
+            // ),
             SizedBox(height: 10.h),
             Row(
               children: [
@@ -99,7 +99,7 @@ modalPrivacyProfile(BuildContext context) {
                     : 'Change to Public',
                 width: size.width,
                 fontSize: 17.sp,
-                backgroundColor: CustomColors.primary,
+                backgroundColor: CustomColors.kPrimary,
                 onPressed: () {
                   Navigator.pop(context);
                   userBloc.add(OnChangeAccountToPrivacy());

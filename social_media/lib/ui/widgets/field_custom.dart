@@ -21,14 +21,14 @@ class TextFieldCustom extends StatelessWidget {
     return TextFormField(
       controller: controller,
       style: GoogleFonts.getFont('Roboto', fontSize: 18.sp),
-      cursorColor: CustomColors.secundary,
+      cursorColor: CustomColors.kSecondary1,
       obscureText: isPassword,
       keyboardType: keyboardType,
       decoration: InputDecoration(
         enabledBorder: const UnderlineInputBorder(
             borderSide: BorderSide(color: Colors.black)),
         focusedBorder: const UnderlineInputBorder(
-            borderSide: BorderSide(color: CustomColors.primary)),
+            borderSide: BorderSide(color: CustomColors.kPrimary)),
         hintText: hintText,
       ),
       validator: validator,

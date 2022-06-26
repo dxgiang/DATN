@@ -81,8 +81,8 @@ class VerifyEmailPage extends StatelessWidget {
                       length: 5,
                       keyboardType: TextInputType.number,
                       pinTheme: PinTheme(
-                          inactiveColor: CustomColors.secundary,
-                          activeColor: CustomColors.primary),
+                          inactiveColor: CustomColors.kSecondary1,
+                          activeColor: CustomColors.kPrimary),
                       onChanged: (value) {},
                       onCompleted: (value) =>
                           userBloc.add(OnVerifyEmailEvent(email, value)))

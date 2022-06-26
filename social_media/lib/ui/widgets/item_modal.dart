@@ -19,7 +19,7 @@ class ItemModal extends StatelessWidget {
       width: double.infinity,
       child: TextButton(
         onPressed: onPressed,
-        style: TextButton.styleFrom(primary: CustomColors.secundary),
+        style: TextButton.styleFrom(primary: CustomColors.kSecondary1),
         child: Align(
             alignment: Alignment.centerLeft,
             child: Row(

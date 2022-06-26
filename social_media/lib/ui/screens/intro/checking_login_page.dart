@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:social_media/commons/assets.dart';
 import 'package:social_media/domain/blocs/blocs.dart';
 import 'package:social_media/ui/helpers/helpers.dart';
@@ -71,8 +72,8 @@ class _CheckingLoginPageState extends State<CheckingLoginPage>
                 gradient: LinearGradient(
                     begin: Alignment.bottomCenter,
                     colors: [
-                      CustomColors.secundary,
-                      CustomColors.primary,
+                      CustomColors.kSecondary1,
+                      CustomColors.kPrimary1,
                       Colors.white
                     ])),
             child: Center(
@@ -85,7 +86,7 @@ class _CheckingLoginPageState extends State<CheckingLoginPage>
                         animation: _animationController,
                         builder: (_, child) => Transform.scale(
                             scale: _scaleAnimation.value,
-                            child: Image.asset(SocialMediaAssets.logoWhite))),
+                            child: SvgPicture.asset(SocialMediaAssets.dashPaperPlane))),
                     SizedBox(height: 10.h),
                     const TextCustom(text: 'Checking...', color: Colors.white)
                   ],

@@ -55,7 +55,7 @@ void modalShowPost(BuildContext context, {required Post post}) {
                                     fontWeight: FontWeight.w500)
                               ],
                             ),
-                            const Icon(Icons.more_vert_rounded)
+                            // const Icon(Icons.more_vert_rounded)
                           ],
                         ),
                       ),
@@ -70,35 +70,35 @@ void modalShowPost(BuildContext context, {required Post post}) {
                                       listImages.first)))),
 
                       // Bottom Modal Options
-                      Container(
-                        padding: EdgeInsets.only(left: 10.w, right: 10.w),
-                        height: 50.h,
-                        width: MediaQuery.of(context).size.width,
-                        decoration: BoxDecoration(
-                            color: Colors.white,
-                            borderRadius: BorderRadius.vertical(
-                                bottom: Radius.circular(10.r))),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Row(
-                              children: [
-                                IconButton(
-                                    onPressed: () {},
-                                    icon: const Icon(
-                                        Icons.favorite_outline_rounded)),
-                                SizedBox(width: 20.w),
-                                SvgPicture.asset(SocialMediaAssets.messageIcon,
-                                    color: Colors.black),
-                                SizedBox(width: 20.w),
-                                SvgPicture.asset(SocialMediaAssets.sendIcon,
-                                    height: 24.h, color: Colors.black)
-                              ],
-                            ),
-                            const Icon(Icons.bookmark_outline_rounded)
-                          ],
-                        ),
-                      ),
+                      // Container(
+                      //   padding: EdgeInsets.only(left: 10.w, right: 10.w),
+                      //   height: 50.h,
+                      //   width: MediaQuery.of(context).size.width,
+                      //   decoration: BoxDecoration(
+                      //       color: Colors.white,
+                      //       borderRadius: BorderRadius.vertical(
+                      //           bottom: Radius.circular(10.r))),
+                      //   child: Row(
+                      //     mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      //     children: [
+                      //       Row(
+                      //         children: [
+                      //           IconButton(
+                      //               onPressed: () {},
+                      //               icon: const Icon(
+                      //                   Icons.favorite_outline_rounded)),
+                      //           SizedBox(width: 20.w),
+                      //           SvgPicture.asset(SocialMediaAssets.messageIcon,
+                      //               color: Colors.black),
+                      //           SizedBox(width: 20.w),
+                      //           SvgPicture.asset(SocialMediaAssets.sendIcon,
+                      //               height: 24.h, color: Colors.black)
+                      //         ],
+                      //       ),
+                      //       const Icon(Icons.bookmark_outline_rounded)
+                      //     ],
+                      //   ),
+                      // ),
                     ],
                   ),
                 ),

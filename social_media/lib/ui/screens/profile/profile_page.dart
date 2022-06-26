@@ -54,7 +54,7 @@ class ProfilePage extends StatelessWidget {
                 padding: EdgeInsets.symmetric(horizontal: 15.w),
                 child: BlocBuilder<UserBloc, UserState>(
                   builder: (_, state) => AnimatedToggle(
-                    values: const ['Photos', 'Saved'],
+                    values: const ['Posts', 'Saved'],
                     onToggleCalbBack: (value) {
                       userBloc.add(OnToggleButtonProfile(!state.isPhotos));
                     },
@@ -117,6 +117,7 @@ class _ListFotosProfile extends StatelessWidget {
                       child: Container(
                         alignment: Alignment.center,
                         decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(5.r),
                             image: DecorationImage(
                                 fit: BoxFit.cover,
                                 image: NetworkImage(
@@ -304,21 +305,26 @@ class _CoverAndProfile extends StatelessWidget {
       width: size.width,
       child: Stack(
         children: [
-          SizedBox(
-            height: 170.h,
-            width: size.width,
-            child: BlocBuilder<UserBloc, UserState>(
-                builder: (_, state) =>
-                    (state.user?.cover != null && state.user?.cover != '')
-                        ? Image(
-                            fit: BoxFit.cover,
-                            image: NetworkImage(
-                                Environment.baseUrl + state.user!.cover))
-                        : Container(
-                            height: 170.h,
-                            width: size.width,
-                            color: CustomColors.primary.withOpacity(.7),
-                          )),
+          GestureDetector(
+            onTap: (){
+              
+            },
+            child: SizedBox(
+              height: 170.h,
+              width: size.width,
+              child: BlocBuilder<UserBloc, UserState>(
+                  builder: (_, state) =>
+                      (state.user?.cover != null && state.user?.cover != '')
+                          ? Image(
+                              fit: BoxFit.cover,
+                              image: NetworkImage(
+                                  Environment.baseUrl + state.user!.cover))
+                          : Container(
+                              height: 170.h,
+                              width: size.width,
+                              color: CustomColors.kPrimary.withOpacity(.7),
+                            )),
+            ),
           ),
           Positioned(
             bottom: 28.h,

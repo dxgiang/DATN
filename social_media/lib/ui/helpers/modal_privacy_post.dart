@@ -57,7 +57,7 @@ modalPrivacyPost(BuildContext context) {
                     children: [
                       CircleAvatar(
                         radius: 25.r,
-                        backgroundColor: CustomColors.primary,
+                        backgroundColor: CustomColors.kPrimary,
                         child: const Icon(Icons.public_rounded,
                             color: Colors.white),
                       ),
@@ -85,7 +85,7 @@ modalPrivacyPost(BuildContext context) {
                     children: [
                       CircleAvatar(
                         radius: 25.r,
-                        backgroundColor: CustomColors.primary,
+                        backgroundColor: CustomColors.kPrimary,
                         child: const Icon(Icons.group_outlined,
                             color: Colors.white),
                       ),
@@ -113,7 +113,7 @@ modalPrivacyPost(BuildContext context) {
                     children: [
                       const CircleAvatar(
                         radius: 25,
-                        backgroundColor: CustomColors.primary,
+                        backgroundColor: CustomColors.kPrimary,
                         child: Icon(Icons.lock_outline_rounded,
                             color: Colors.white),
                       ),

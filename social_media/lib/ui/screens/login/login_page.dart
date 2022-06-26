@@ -50,7 +50,7 @@ class _LoginPageState extends State<LoginPage> {
         } else if (state is FailureAuthentication) {
           Navigator.pop(context);
 
-          if (state.error == 'Please check your email!') {
+          if (state.error == 'Incorrect email!') {
             Navigator.push(
                 context,
                 routeSlide(
@@ -87,21 +87,15 @@ class _LoginPageState extends State<LoginPage> {
                   children: [
                     SizedBox(height: 10.h),
                     TextCustom(
-                        text: 'Welcome back!',
+                        text: 'Login to continue!',
                         letterSpacing: 1.5,
                         fontWeight: FontWeight.w600,
                         fontSize: 30.sp,
-                        color: CustomColors.secundary),
-                    SizedBox(height: 10.h),
-                    TextCustom(
-                      text: 'Log in to continue.',
-                      fontSize: 18.sp,
-                      letterSpacing: 1.0,
-                    ),
+                        color: CustomColors.kSecondary1),
                     SizedBox(height: 70.h),
                     TextFieldCustom(
                       controller: emailController,
-                      hintText: 'Email',
+                      hintText: 'Enter Your Email',
                       keyboardType: TextInputType.emailAddress,
                       validator: validatedEmail,
                     ),

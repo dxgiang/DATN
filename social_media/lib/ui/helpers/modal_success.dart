@@ -18,10 +18,10 @@ void modalSuccess(BuildContext context, String text,
             Row(
               children: const [
                 TextCustom(
-                    text: 'Social ',
-                    color: CustomColors.primary,
+                    text: 'Flu ',
+                    color: CustomColors.kPrimary,
                     fontWeight: FontWeight.w500),
-                TextCustom(text: 'Media', fontWeight: FontWeight.w500),
+                TextCustom(text: 'Social', fontWeight: FontWeight.w500),
               ],
             ),
             const Divider(),
@@ -33,11 +33,11 @@ void modalSuccess(BuildContext context, String text,
                   shape: BoxShape.circle,
                   gradient: LinearGradient(
                       begin: Alignment.centerLeft,
-                      colors: [Colors.white, CustomColors.primary])),
+                      colors: [Colors.white, CustomColors.kPrimary])),
               child: Container(
                 margin: const EdgeInsets.all(10.0),
                 decoration: const BoxDecoration(
-                    shape: BoxShape.circle, color: CustomColors.primary),
+                    shape: BoxShape.circle, color: CustomColors.kPrimary),
                 child: const Icon(Icons.check, color: Colors.white, size: 38),
               ),
             ),
@@ -52,10 +52,10 @@ void modalSuccess(BuildContext context, String text,
                 height: 35.h,
                 width: 150.w,
                 decoration: BoxDecoration(
-                    color: CustomColors.primary,
+                    color: CustomColors.kPrimary,
                     borderRadius: BorderRadius.circular(5.r)),
                 child: TextCustom(
-                    text: 'Hello', color: Colors.white, fontSize: 17.sp),
+                    text: 'Done', color: Colors.white, fontSize: 17.sp),
               ),
             )
           ],

@@ -38,7 +38,7 @@ class _LanguagePageState extends State<LanguagePage> {
               RadioListTile<Lang>(
                 title: Text(S.of(context).language),
                 value: Lang.en,
-                groupValue: _languageToggle,
+                groupValue: _languageToggle,  
                 onChanged: (Lang? value) {
                   setState(() {
                     _languageToggle = value;

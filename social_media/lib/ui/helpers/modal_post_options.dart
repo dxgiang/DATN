@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:social_media/ui/helpers/helpers.dart';
+import 'package:social_media/ui/helpers/modal_report_posts.dart';
 import 'package:social_media/ui/screens/profile/setting_profile_page.dart';
 import 'package:social_media/ui/themes/color_custom.dart';
+import 'package:social_media/ui/widgets/custom_dialog.dart';
 import 'package:social_media/ui/widgets/widgets.dart';
 
 modalPostOptions(BuildContext context, Size size) {
@@ -13,7 +15,7 @@ modalPostOptions(BuildContext context, Size size) {
             BorderRadiusDirectional.vertical(top: Radius.circular(20.r))),
     backgroundColor: Colors.white,
     builder: (context) => Container(
-      height: size.height * .36,
+      height: size.height * .25,
       width: size.width,
       decoration: BoxDecoration(
           color: Colors.white,
@@ -36,38 +38,32 @@ modalPostOptions(BuildContext context, Size size) {
             ),
             SizedBox(height: 10.h),
             Item(
-              icon: Icons.settings,
-              text: 'Settings',
+              icon: Icons.delete_outline_outlined,
+              text: 'Delete post',
               size: size,
-              onPressed: () {
-                Navigator.pop(context);
-                Navigator.push(
-                    context, routeSlide(page: const SettingProfilePage()));
-              },
+              onPressed: () => showDialog(
+                  context: context,
+                  builder: (context) {
+                    return const CustomDialog();
+                  }),
             ),
             Item(
-              icon: Icons.history,
-              text: 'Your activity',
+              icon: Icons.hide_image_rounded,
+              text: 'Hide post',
               size: size,
               onPressed: () {},
             ),
             Item(
-              icon: Icons.qr_code_rounded,
-              text: 'QR Code',
+              icon: Icons.report_gmailerrorred_rounded,
+              text: 'Report post',
               size: size,
-              onPressed: () {},
-            ),
-            Item(
-              icon: Icons.bookmark_border_rounded,
-              text: 'Saved',
-              size: size,
-              onPressed: () {},
-            ),
-            Item(
-              icon: Icons.health_and_safety_sharp,
-              text: 'COVID-19 information',
-              size: size,
-              onPressed: () {},
+              onPressed: () => modalReportPost(
+                context: context,
+                title: 'Report post',
+                // onTap: (){
+
+                // }
+              ),
             ),
           ],
         ),
@@ -97,7 +93,7 @@ class Item extends StatelessWidget {
       width: size.width,
       child: TextButton(
         onPressed: onPressed,
-        style: TextButton.styleFrom(primary: CustomColors.secundary),
+        style: TextButton.styleFrom(primary: CustomColors.kSecondary),
         child: Align(
             alignment: Alignment.centerLeft,
             child: Row(

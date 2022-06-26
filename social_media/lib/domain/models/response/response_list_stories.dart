@@ -1,5 +1,10 @@
 import 'dart:convert';
 
+enum MediaType {
+  image,
+  video,
+}
+
 ResponseListStories responseListStoriesFromJson(String str) =>
     ResponseListStories.fromJson(json.decode(str));
 
@@ -39,7 +44,7 @@ class ListStory {
     required this.createdAt,
     required this.storyUid,
   });
-
+  
   String uidMediaStory;
   String media;
   DateTime createdAt;

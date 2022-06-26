@@ -9,3 +9,5 @@ final passwordValidator = MultiValidator([
   RequiredValidator(errorText: 'Password is required'),
   MinLengthValidator(8, errorText: 'Minimum 8 characters')
 ]);
+final changepasswordValidator =
+    MatchValidator(errorText: 'Passwords do not match');

@@ -55,7 +55,7 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
                     letterSpacing: 1.5,
                     fontWeight: FontWeight.w500,
                     fontSize: 25.sp,
-                    color: CustomColors.secundary),
+                    color: CustomColors.kSecondary1),
                 SizedBox(height: 10.h),
                 TextCustom(
                   text: 'Enter your email to recover your account.',
@@ -72,7 +72,7 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
                 SizedBox(height: 10.h),
                 TextFieldCustom(
                   controller: emailController,
-                  hintText: 'Email',
+                  hintText: 'Enter Your Email',
                   keyboardType: TextInputType.emailAddress,
                 ),
                 SizedBox(height: 40.h),

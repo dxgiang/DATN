@@ -18,17 +18,17 @@ void modalLoading(BuildContext context, String text) {
             Row(
               children: const [
                 TextCustom(
-                    text: 'App ',
-                    color: CustomColors.primary,
+                    text: 'Flu ',
+                    color: CustomColors.kPrimary,
                     fontWeight: FontWeight.w500),
-                TextCustom(text: 'Test', fontWeight: FontWeight.w500),
+                TextCustom(text: 'Social', fontWeight: FontWeight.w500),
               ],
             ),
             const Divider(),
             SizedBox(height: 10.h),
             Row(
               children: [
-                const CircularProgressIndicator(color: CustomColors.primary),
+                const CircularProgressIndicator(color: CustomColors.kPrimary),
                 SizedBox(width: 15.0.w),
                 TextCustom(text: text)
               ],

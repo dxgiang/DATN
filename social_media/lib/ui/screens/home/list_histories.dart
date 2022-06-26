@@ -40,7 +40,7 @@ class ListHistories extends StatelessWidget {
                                 shape: BoxShape.circle,
                                 gradient: LinearGradient(
                                     begin: Alignment.topCenter,
-                                    colors: [Colors.pink, Colors.amber])),
+                                    colors: [Colors.limeAccent, Colors.blueAccent])),
                             child: Container(
                               height: 60.h,
                               width: 60.w,
@@ -93,8 +93,8 @@ class ListHistories extends StatelessWidget {
                                         gradient: LinearGradient(
                                             begin: Alignment.topCenter,
                                             colors: [
-                                              Colors.pink,
-                                              Colors.amber
+                                              Colors.lightBlueAccent,
+                                              Colors.greenAccent
                                             ])),
                                     child: Container(
                                       height: 60.h,

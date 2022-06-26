@@ -34,6 +34,11 @@ class _ChatMessagesPageState extends State<ChatMessagesPage>
 
   List<ChatMessage> chatMessage = [];
 
+  bool get _activeButton {
+    bool active = _messageController.text.isNotEmpty;
+    return active;
+  }
+
   @override
   void initState() {
     super.initState();
@@ -174,9 +179,11 @@ class _ChatMessagesPageState extends State<ChatMessagesPage>
       padding: EdgeInsets.symmetric(horizontal: 5.w),
       child: Row(
         children: [
+          const Icon(Icons.attach_file_outlined),
+          SizedBox(width: 10.w),
           Flexible(
               child: BlocBuilder<ChatBloc, ChatState>(
-            builder: (_, state) => TextField(
+            builder: (_, state) => TextFormField(
               controller: _messageController,
               focusNode: _focusNode,
               onChanged: (value) {
@@ -188,17 +195,23 @@ class _ChatMessagesPageState extends State<ChatMessagesPage>
               },
               decoration: InputDecoration(
                   border: InputBorder.none,
-                  hintText: 'Write a message',
+                  hintText: 'Message',
                   hintStyle: GoogleFonts.roboto(fontSize: 17.sp)),
             ),
           )),
+          const Icon(Icons.sentiment_satisfied_outlined),
           BlocBuilder<ChatBloc, ChatState>(
             builder: (_, state) => TextButton(
+                onFocusChange: (value) {
+                  setState(() {
+                    _activeButton;
+                  });
+                },
                 onPressed: state.isWritting
                     ? () => _handleSubmit(_messageController.text.trim())
                     : null,
                 child: const TextCustom(
-                    text: 'Send', color: CustomColors.primary)),
+                    text: 'Send', color: CustomColors.kPrimary)),
           )
         ],
       ),

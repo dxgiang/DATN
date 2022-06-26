@@ -154,13 +154,13 @@ class _CommentsPostPageState extends State<CommentsPostPage> {
                       ),
                       Container(
                         height: 70.h,
-                        decoration: BoxDecoration(
-                            color: const Color(0xff1F2128),
-                            borderRadius: BorderRadius.vertical(
-                                top: Radius.circular(18.r))),
+                        decoration: const BoxDecoration(
+                          color: Color(0xff1F2128),
+                        ),
                         child: Padding(
                           padding: EdgeInsets.symmetric(horizontal: 15.w),
                           child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
                               Expanded(
                                 child: Container(

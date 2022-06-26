@@ -37,19 +37,20 @@ class BottomNavigationCustom extends StatelessWidget {
             onPressed: () => Navigator.pushAndRemoveUntil(
                 context, routeSlide(page: const SearchPage()), (_) => false),
           ),
+          // _ItemButtom(
+          //   i: 3,
+          //   index: index,
+          //   isIcon: false,
+          //   isReel: isReel,
+          //   iconString: SocialMediaAssets.movieReel,
+          //   onPressed: () => Navigator.push(
+          //       context, routeSlide(page: const ReelHomeScreen())),
+          // ),
           _ItemButtom(
             i: 3,
             index: index,
             isIcon: false,
-            isReel: isReel,
-            iconString: SocialMediaAssets.movieReel,
-            onPressed: () => Navigator.push(
-                context, routeSlide(page: const ReelHomeScreen())),
-          ),
-          _ItemButtom(
-            i: 4,
-            index: index,
-            icon: Icons.favorite_border_rounded,
+            iconString: SocialMediaAssets.notificationIcon,
             isReel: isReel,
             onPressed: () => Navigator.pushAndRemoveUntil(context,
                 routeSlide(page: const NotificationsPage()), (_) => false),
@@ -75,7 +76,7 @@ class _ItemProfile extends StatelessWidget {
                       NetworkImage(Environment.baseUrl + state.user!.image))
               : CircleAvatar(
                   radius: 15.r,
-                  backgroundColor: CustomColors.primary,
+                  backgroundColor: CustomColors.kPrimary,
                   child: const CircularProgressIndicator(
                       color: Colors.white, strokeWidth: 2))),
     );
@@ -110,7 +111,7 @@ class _ItemButtom extends StatelessWidget {
         child: (isIcon)
             ? Icon(icon,
                 color: (i == index)
-                    ? CustomColors.primary
+                    ? CustomColors.kPrimary
                     : isReel
                         ? Colors.white
                         : Colors.black87,
@@ -118,7 +119,7 @@ class _ItemButtom extends StatelessWidget {
             : SvgPicture.asset(iconString!,
                 height: 25.h,
                 color: (i == index)
-                    ? CustomColors.primary
+                    ? CustomColors.kPrimary
                     : isReel
                         ? Colors.white
                         : Colors.black87),

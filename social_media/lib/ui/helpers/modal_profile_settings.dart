@@ -1,18 +1,84 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:modal_side_sheet/modal_side_sheet.dart';
 import 'package:social_media/ui/helpers/helpers.dart';
 import 'package:social_media/ui/screens/profile/setting_profile_page.dart';
 import 'package:social_media/ui/themes/color_custom.dart';
 import 'package:social_media/ui/widgets/widgets.dart';
 
 modalProfileSetting(BuildContext context, Size size) {
-  showModalBottomSheet(
+  // showModalBottomSheet(
+  //   context: context,
+  //   shape: RoundedRectangleBorder(
+  //       borderRadius:
+  //           BorderRadiusDirectional.vertical(top: Radius.circular(20.r))),
+  //   backgroundColor: Colors.white,
+  //   builder: (context) => Container(
+  //     height: size.height * .36,
+  //     width: size.width,
+  //     decoration: BoxDecoration(
+  //         color: Colors.white,
+  //         borderRadius:
+  //             BorderRadiusDirectional.vertical(top: Radius.circular(20.r))),
+  //     child: Padding(
+  //       padding: EdgeInsets.symmetric(vertical: 20.h, horizontal: 10.w),
+  //       child: Column(
+  //         crossAxisAlignment: CrossAxisAlignment.start,
+  //         children: [
+  //           Align(
+  //             alignment: Alignment.center,
+  //             child: Container(
+  //               height: 4.h,
+  //               width: 35.w,
+  //               decoration: BoxDecoration(
+  //                   color: Colors.grey[400],
+  //                   borderRadius: BorderRadius.circular(50.r)),
+  //             ),
+  //           ),
+  //           SizedBox(height: 10.h),
+  //           Item(
+  //             icon: Icons.settings,
+  //             text: 'Settings',
+  //             size: size,
+  //             onPressed: () {
+  //               Navigator.pop(context);
+  //               Navigator.push(
+  //                   context, routeSlide(page: const SettingProfilePage()));
+  //             },
+  //           ),
+  //           // Item(
+  //           //   icon: Icons.history,
+  //           //   text: 'Your activity',
+  //           //   size: size,
+  //           //   onPressed: () {},
+  //           // ),
+  //           // Item(
+  //           //   icon: Icons.qr_code_rounded,
+  //           //   text: 'QR Code',
+  //           //   size: size,
+  //           //   onPressed: () {},
+  //           // ),
+  //           // Item(
+  //           //   icon: Icons.bookmark_border_rounded,
+  //           //   text: 'Saved',
+  //           //   size: size,
+  //           //   onPressed: () {},
+  //           // ),
+  //           // Item(
+  //           //   icon: Icons.health_and_safety_sharp,
+  //           //   text: 'COVID-19 information',
+  //           //   size: size,
+  //           //   onPressed: () {},
+  //           // ),
+  //         ],
+  //       ),
+  //     ),
+  //   ),
+  // );
+  showModalSideSheet(
     context: context,
-    shape: RoundedRectangleBorder(
-        borderRadius:
-            BorderRadiusDirectional.vertical(top: Radius.circular(20.r))),
-    backgroundColor: Colors.white,
-    builder: (context) => Container(
+    ignoreAppBar: false,
+    body: Container(
       height: size.height * .36,
       width: size.width,
       decoration: BoxDecoration(
@@ -21,56 +87,29 @@ modalProfileSetting(BuildContext context, Size size) {
               BorderRadiusDirectional.vertical(top: Radius.circular(20.r))),
       child: Padding(
         padding: EdgeInsets.symmetric(vertical: 20.h, horizontal: 10.w),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Align(
-              alignment: Alignment.center,
-              child: Container(
-                height: 4.h,
-                width: 35.w,
-                decoration: BoxDecoration(
-                    color: Colors.grey[400],
-                    borderRadius: BorderRadius.circular(50.r)),
-              ),
-            ),
-            SizedBox(height: 10.h),
-            Item(
-              icon: Icons.settings,
-              text: 'Settings',
-              size: size,
-              onPressed: () {
-                Navigator.pop(context);
-                Navigator.push(
-                    context, routeSlide(page: const SettingProfilePage()));
-              },
-            ),
-            Item(
-              icon: Icons.history,
-              text: 'Your activity',
-              size: size,
-              onPressed: () {},
-            ),
-            Item(
-              icon: Icons.qr_code_rounded,
-              text: 'QR Code',
-              size: size,
-              onPressed: () {},
-            ),
-            Item(
-              icon: Icons.bookmark_border_rounded,
-              text: 'Saved',
-              size: size,
-              onPressed: () {},
-            ),
-            Item(
-              icon: Icons.health_and_safety_sharp,
-              text: 'COVID-19 information',
-              size: size,
-              onPressed: () {},
-            ),
-          ],
-        ),
+        child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+          // Align(
+          //   alignment: Alignment.center,
+          //   child: Container(
+          //     height: 4.h,
+          //     width: 35.w,
+          //     decoration: BoxDecoration(
+          //         color: Colors.grey[400],
+          //         borderRadius: BorderRadius.circular(50.r)),
+          //   ),
+          // ),
+          SizedBox(height: 50.h),
+          Item(
+            icon: Icons.settings,
+            text: 'Settings',
+            size: size,
+            onPressed: () {
+              Navigator.pop(context);
+              Navigator.push(
+                  context, routeSlide(page: const SettingProfilePage()));
+            },
+          ),
+        ]),
       ),
     ),
   );
@@ -97,7 +136,7 @@ class Item extends StatelessWidget {
       width: size.width,
       child: TextButton(
         onPressed: onPressed,
-        style: TextButton.styleFrom(primary: CustomColors.secundary),
+        style: TextButton.styleFrom(primary: CustomColors.kSecondary),
         child: Align(
             alignment: Alignment.centerLeft,
             child: Row(

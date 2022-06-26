@@ -1,3 +1,4 @@
+import 'dart:io';
 import 'dart:ui';
 
 import 'package:cached_network_image/cached_network_image.dart';
@@ -10,11 +11,19 @@ import 'package:social_media/domain/models/response/response_stories.dart';
 import 'package:social_media/domain/services/story_services.dart';
 import 'package:social_media/ui/screens/Story/widgets/animated_line.dart';
 import 'package:social_media/ui/widgets/widgets.dart';
+import 'package:timeago/timeago.dart' as timeago;
+import 'package:video_player/video_player.dart';
 
 class ViewStoryPage extends StatefulWidget {
   final StoryHome storyHome;
+  final DateTime? time;
+  // final List<ListStory> stories;
 
-  const ViewStoryPage({Key? key, required this.storyHome}) : super(key: key);
+  const ViewStoryPage({
+    Key? key,
+    required this.storyHome,
+    this.time,
+  }) : super(key: key);
 
   @override
   State<ViewStoryPage> createState() => _ViewStoryPageState();
@@ -23,12 +32,15 @@ class ViewStoryPage extends StatefulWidget {
 class _ViewStoryPageState extends State<ViewStoryPage>
     with TickerProviderStateMixin {
   late PageController _pageController;
+  late VideoPlayerController _videoPlayerController;
   late AnimationController _animationController;
   int _currentStory = 0;
 
   @override
   void initState() {
     _pageController = PageController(viewportFraction: .99);
+    // _videoPlayerController = VideoPlayerController.file(File(path))..initialize().then((value) => setState((){}));
+    // _videoPlayerController.play();
     _animationController = AnimationController(vsync: this);
 
     _showStory();
@@ -155,7 +167,9 @@ class _ViewStoryPageState extends State<ViewStoryPage>
                                         text: widget.storyHome.username,
                                         color: Colors.white),
                                     TextCustom(
-                                        text: '5 hours ago',
+                                        text: timeago.format(
+                                            widget.time ?? DateTime.now(),
+                                            locale: 'en_short'),
                                         color: Colors.white70,
                                         fontSize: 14.sp)
                                   ],
@@ -171,34 +185,34 @@ class _ViewStoryPageState extends State<ViewStoryPage>
                           ),
 
                           const Spacer(),
-                          Row(
-                            children: [
-                              Expanded(
-                                  child: ClipRRect(
-                                borderRadius: BorderRadius.circular(10.r),
-                                child: BackdropFilter(
-                                  filter:
-                                      ImageFilter.blur(sigmaX: 10, sigmaY: 10),
-                                  child: Container(
-                                    color: Colors.white.withOpacity(.1),
-                                    child: TextField(
-                                      decoration: InputDecoration(
-                                          contentPadding:
-                                              EdgeInsets.only(left: 20.w),
-                                          hintText: 'Write a comment',
-                                          hintStyle: GoogleFonts.roboto(
-                                              color: Colors.white)),
-                                    ),
-                                  ),
-                                ),
-                              )),
-                              SizedBox(width: 10.w),
-                              IconButton(
-                                  onPressed: () {},
-                                  icon: const Icon(Icons.send_rounded,
-                                      color: Colors.white))
-                            ],
-                          )
+                          // Row(
+                          //   children: [
+                          //     Expanded(
+                          //         child: ClipRRect(
+                          //       borderRadius: BorderRadius.circular(10.r),
+                          //       child: BackdropFilter(
+                          //         filter:
+                          //             ImageFilter.blur(sigmaX: 10, sigmaY: 10),
+                          //         child: Container(
+                          //           color: Colors.white.withOpacity(.1),
+                          //           child: TextField(
+                          //             decoration: InputDecoration(
+                          //                 contentPadding:
+                          //                     EdgeInsets.only(left: 20.w),
+                          //                 hintText: 'Write a comment',
+                          //                 hintStyle: GoogleFonts.roboto(
+                          //                     color: Colors.white)),
+                          //           ),
+                          //         ),
+                          //       ),
+                          //     )),
+                          //     SizedBox(width: 10.w),
+                          //     IconButton(
+                          //         onPressed: () {},
+                          //         icon: const Icon(Icons.send_rounded,
+                          //             color: Colors.white))
+                          //   ],
+                          // )
                         ],
                       ),
                     ),

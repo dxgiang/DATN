@@ -50,7 +50,7 @@ class ChatMessage extends StatelessWidget {
             TextCustom(
                 text:
                     timeago.format(time ?? DateTime.now(), locale: 'en_short'),
-                fontSize: 15.sp,
+                fontSize: 13.sp,
                 color: Colors.grey),
             Container(
               padding: EdgeInsets.symmetric(horizontal: 10.h, vertical: 7.h),
@@ -58,7 +58,7 @@ class ChatMessage extends StatelessWidget {
               child: TextCustom(
                   text: message, color: Colors.white, fontSize: 17.sp),
               decoration: BoxDecoration(
-                  color: CustomColors.primary,
+                  color: CustomColors.kPrimary,
                   borderRadius: BorderRadius.circular(10.r)),
             ),
           ],

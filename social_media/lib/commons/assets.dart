@@ -25,6 +25,8 @@ class SocialMediaAssets {
 
   static String get logo => _getImgPng('logo.png');
 
+  static String get flutter3 => _getImgPng('flutter_3.png');
+
   //SVG
   static String get addRounded => _getImgSvg('add_rounded.svg');
 
@@ -65,4 +67,8 @@ class SocialMediaAssets {
       _getImgSvg('undraw_social_influencer.svg');
 
   static String get withoutPostsHome => _getImgSvg('without-posts-home.svg');
+
+  static String get dashPaperPlane => _getImgSvg('dash_paper_plane1.svg');
+
+  static String get dartLogo => _getImgSvg('dart_logo.svg');
 }

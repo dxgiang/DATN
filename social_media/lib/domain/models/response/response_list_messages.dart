@@ -6,6 +6,14 @@ ResponseListMessages responseListMessagesFromJson(String str) =>
 String responseListMessagesToJson(ResponseListMessages data) =>
     json.encode(data.toJson());
 
+class MessagesModel {
+  static final List<dynamic> messages = [];
+
+  static updateMessages(dynamic message) async {
+    messages.add(message);
+  }
+}
+
 class ResponseListMessages {
   ResponseListMessages({
     required this.resp,

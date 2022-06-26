@@ -1,15 +1,19 @@
+import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:social_media/commons/l10n/generated/l10n.dart';
-import 'package:social_media/commons/themes/custom_theme.dart';
 import 'package:social_media/domain/blocs/blocs.dart';
 import 'package:social_media/domain/blocs/post/post_bloc.dart';
+import 'package:social_media/firebase/messaging.dart';
 import 'package:social_media/ui/screens/intro/checking_login_page.dart';
 
 void main() {
+  WidgetsFlutterBinding.ensureInitialized();
+  initializeMessaging();
+  FirebaseMessaging.onBackgroundMessage(firebaseMessagingBackgroundHandler);
   runApp(const MyApp());
 }
 
@@ -37,14 +41,14 @@ class MyApp extends StatelessWidget {
           builder: (context, child) {
             return MaterialApp(
               debugShowCheckedModeBanner: false,
-              title: 'Social Media',
+              title: 'FluSocial',
               supportedLocales: S.delegate.supportedLocales,
               // ignore: prefer_const_literals_to_create_immutables
               localizationsDelegates: [
                 S.delegate,
                 GlobalMaterialLocalizations.delegate,
-                GlobalWidgetsLocalizations.delegate,
                 GlobalCupertinoLocalizations.delegate,
+                GlobalWidgetsLocalizations.delegate,
               ],
               home: const CheckingLoginPage(),
             );

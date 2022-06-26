@@ -87,7 +87,7 @@ class _ChangePasswordPageState extends State<ChangePasswordPage> {
                   child: TextCustom(
                       text: 'Save',
                       fontSize: 15.sp,
-                      color: CustomColors.primary))
+                      color: CustomColors.kPrimary))
             ],
           ),
           body: Form(
@@ -116,13 +116,13 @@ class _ChangePasswordPageState extends State<ChangePasswordPage> {
                         MinLengthValidator(8,
                             errorText: 'Minimum 8 characters'),
                         RequiredValidator(
-                            errorText: 'El campo no puede estar vacio')
+                            errorText: 'This field cannot be empty')
                       ]),
                     ),
                     SizedBox(height: 20.h),
                     TextFormProfile(
                       controller: _newPasswordAgainController,
-                      labelText: 'Repeat password',
+                      labelText: 'Retype password',
                       validator: MultiValidator([
                         MinLengthValidator(8,
                             errorText: 'Minimum 8 characters'),
